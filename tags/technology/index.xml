@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Technology on Nemath Ahmed</title>
+    <link>/tags/technology/</link>
+    <description>Recent content in Technology on Nemath Ahmed</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Nemath Ahmed</copyright>
+    <lastBuildDate>Mon, 31 May 2021 09:00:00 +0000</lastBuildDate><atom:link href="/tags/technology/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Achieving Photorealism With Neural Networks</title>
+      <link>/posts/2021-05-31-achieving-photorealism-with-neural-network/</link>
+      <pubDate>Mon, 31 May 2021 09:00:00 +0000</pubDate>
+      
+      <guid>/posts/2021-05-31-achieving-photorealism-with-neural-network/</guid>
+      <description>Achieving Photorealism With Neural Networks Originally Published in TowardsDataScience
+Using synthetic data from GTA V In the research world, especially while dealing with images, there appears to be an increase of interest in using popular game environments, such as *Grand Theft Auto (GTA), *for experimentation. With today’s high-quality graphics, these environments produce synthetic images similar to real life, enabling researchers to test their approaches to intricate problems such as [this one](http://Domain Adaptation for Traffic Density Estimation), datasets for which are still nascent.</description>
+    </item>
+    
+    <item>
+      <title>The 2020s- A Big Decade for Telemedicine</title>
+      <link>/posts/2021-01-25-the-2020s-big-decade-for-telemedicine/</link>
+      <pubDate>Mon, 25 Jan 2021 09:00:00 +0000</pubDate>
+      
+      <guid>/posts/2021-01-25-the-2020s-big-decade-for-telemedicine/</guid>
+      <description>The 2020s: A Big Decade for Telemedicine Originally Published in Geek Culture
+The Growth Attributed to the Pandemic Photo by Daan Stevens on Unsplash
+ The Pandemic taught us something essential — the value of healthcare.
+ During the peak COVID season, we saw how the lack of healthcare facilities led to fatalities that could have been prevented. This was the case even with countries with world-class healthcare systems.
+What we can learn from this experience is that we need something more than the existing systems in place.</description>
+    </item>
+    
+    <item>
+      <title>The Rush to Push AI to Edge</title>
+      <link>/posts/2020-06-23-rush-to-push-ai-to-edge/</link>
+      <pubDate>Sat, 27 Jun 2020 09:00:00 +0000</pubDate>
+      
+      <guid>/posts/2020-06-23-rush-to-push-ai-to-edge/</guid>
+      <description>The Rush to Push AI to Edge Why companies such as Apple, Intel, Google are trying to move AI from cloud to edge Earlier this year, Apple announced its US$200 million acquisition of Seattle-based edge-AI startup Xnor.ai. This was one of its many other moves to bring the AI-inferencing from cloud to the local hardware.
+Canva.com
+Today, algorithms sit on the cloud and serve your requests. As you can guess, there can be a latency as the data has to travel between the cloud servers and the remote client.</description>
+    </item>
+    
+    <item>
+      <title>Heard About Brain Computer Interfaces?</title>
+      <link>/posts/2020-06-23-heard-about-brain-computer-interfaces/</link>
+      <pubDate>Tue, 23 Jun 2020 09:00:00 +0000</pubDate>
+      
+      <guid>/posts/2020-06-23-heard-about-brain-computer-interfaces/</guid>
+      <description>Heard About Brain Computer Interfaces? A brief look into what our future might be like! What would it be like to control everything around you just by the sense of thought? Imagine controlling a drone not by a physical controller but instead by the waves emitted from your brain. How cool would that be?
+And what if I told you there are prototypes for such brain-controlled drones currently in existence and that few years down the line you could own one.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Internship on Nemath Ahmed</title>
+    <link>/tags/internship/</link>
+    <description>Recent content in Internship on Nemath Ahmed</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Nemath Ahmed</copyright>
+    <lastBuildDate>Sun, 10 Jan 2021 09:00:00 +0000</lastBuildDate><atom:link href="/tags/internship/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My Data Science Internship Story</title>
+      <link>/posts/2021-01-10-my-data-science-internship-story/</link>
+      <pubDate>Sun, 10 Jan 2021 09:00:00 +0000</pubDate>
+      
+      <guid>/posts/2021-01-10-my-data-science-internship-story/</guid>
+      <description>My Data Science Internship Story Originally Published in TowardsDataScience
+Things I experienced during my 9-month stint at an AI-Healthcare startup  Hey everyone! A very happy new year. I wanted to start this year off by sharing my recent experience as a Data Science Intern at Dozee, an AI based healthcare startup in India. I’ll try to cover everything from what my daily schedule to my learnings and overall experience.</description>
+    </item>
+    
+  </channel>
+</rss>

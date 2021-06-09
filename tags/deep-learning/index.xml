@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deep Learning on Nemath Ahmed</title>
+    <link>/tags/deep-learning/</link>
+    <description>Recent content in Deep Learning on Nemath Ahmed</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Nemath Ahmed</copyright>
+    <lastBuildDate>Fri, 19 Jun 2020 09:00:00 +0000</lastBuildDate><atom:link href="/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI Learns to Multiply in 20 Seconds</title>
+      <link>/posts/2020-06-19-ai-learns-to-multiply/</link>
+      <pubDate>Fri, 19 Jun 2020 09:00:00 +0000</pubDate>
+      
+      <guid>/posts/2020-06-19-ai-learns-to-multiply/</guid>
+      <description>AI Learns to Multiply in 20 Seconds How quickly and accurately can AI learn multiplication?  Today, Artificial Intelligence is accomplishing tasks that were once assumed to be past human aptitudes. Right from detecting Retinopathic eye to life-threatening tumors, AI is soon becoming capable of all complex tasks out there.
+  Today we run downhill and see how AI performs at one of the most simple tasks for modern computers: Multiplication.</description>
+    </item>
+    
+  </channel>
+</rss>

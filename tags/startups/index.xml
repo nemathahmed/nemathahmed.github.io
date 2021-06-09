@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Startups on Nemath Ahmed</title>
+    <link>/tags/startups/</link>
+    <description>Recent content in Startups on Nemath Ahmed</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Nemath Ahmed</copyright>
+    <lastBuildDate>Sat, 27 Jun 2020 09:00:00 +0000</lastBuildDate><atom:link href="/tags/startups/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Rush to Push AI to Edge</title>
+      <link>/posts/2020-06-23-rush-to-push-ai-to-edge/</link>
+      <pubDate>Sat, 27 Jun 2020 09:00:00 +0000</pubDate>
+      
+      <guid>/posts/2020-06-23-rush-to-push-ai-to-edge/</guid>
+      <description>The Rush to Push AI to Edge Why companies such as Apple, Intel, Google are trying to move AI from cloud to edge Earlier this year, Apple announced its US$200 million acquisition of Seattle-based edge-AI startup Xnor.ai. This was one of its many other moves to bring the AI-inferencing from cloud to the local hardware.
+Canva.com
+Today, algorithms sit on the cloud and serve your requests. As you can guess, there can be a latency as the data has to travel between the cloud servers and the remote client.</description>
+    </item>
+    
+  </channel>
+</rss>
