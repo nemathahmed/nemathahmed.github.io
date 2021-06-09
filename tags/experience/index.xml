@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Experience on Nemath Ahmed</title>
-    <link>/tags/experience/</link>
+    <link>https://nemathahmed.github.io/tags/experience/</link>
     <description>Recent content in Experience on Nemath Ahmed</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Nemath Ahmed</copyright>
-    <lastBuildDate>Sat, 05 Jun 2021 09:00:00 +0000</lastBuildDate><atom:link href="/tags/experience/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 05 Jun 2021 09:00:00 +0000</lastBuildDate><atom:link href="https://nemathahmed.github.io/tags/experience/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Three Pointers for Your Next Interview</title>
-      <link>/posts/2021-06-05-pointers-for-next-interview/</link>
+      <link>https://nemathahmed.github.io/posts/2021-06-05-pointers-for-next-interview/</link>
       <pubDate>Sat, 05 Jun 2021 09:00:00 +0000</pubDate>
       
-      <guid>/posts/2021-06-05-pointers-for-next-interview/</guid>
+      <guid>https://nemathahmed.github.io/posts/2021-06-05-pointers-for-next-interview/</guid>
       <description>Three Pointers for Your Next Interview Originally Published in Illumination
 Succinctness, revisiting the unanswered, and adding context. Photo by Geraldine Lewa on Unsplash
 I like to see interviews as a two-way process where both you and the company try to find the right match. This makes it an experience rather than just a pursuit of answering questions.
@@ -22,10 +22,10 @@ With each interview, I’ve had at least a handful of learnings that I think can
     
     <item>
       <title>My Data Science Internship Story</title>
-      <link>/posts/2021-01-10-my-data-science-internship-story/</link>
+      <link>https://nemathahmed.github.io/posts/2021-01-10-my-data-science-internship-story/</link>
       <pubDate>Sun, 10 Jan 2021 09:00:00 +0000</pubDate>
       
-      <guid>/posts/2021-01-10-my-data-science-internship-story/</guid>
+      <guid>https://nemathahmed.github.io/posts/2021-01-10-my-data-science-internship-story/</guid>
       <description>My Data Science Internship Story Originally Published in TowardsDataScience
 Things I experienced during my 9-month stint at an AI-Healthcare startup  Hey everyone! A very happy new year. I wanted to start this year off by sharing my recent experience as a Data Science Intern at Dozee, an AI based healthcare startup in India. I’ll try to cover everything from what my daily schedule to my learnings and overall experience.</description>
     </item>

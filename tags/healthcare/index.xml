@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Healthcare on Nemath Ahmed</title>
-    <link>/tags/healthcare/</link>
+    <link>https://nemathahmed.github.io/tags/healthcare/</link>
     <description>Recent content in Healthcare on Nemath Ahmed</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Nemath Ahmed</copyright>
-    <lastBuildDate>Mon, 25 Jan 2021 09:00:00 +0000</lastBuildDate><atom:link href="/tags/healthcare/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 25 Jan 2021 09:00:00 +0000</lastBuildDate><atom:link href="https://nemathahmed.github.io/tags/healthcare/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The 2020s- A Big Decade for Telemedicine</title>
-      <link>/posts/2021-01-25-the-2020s-big-decade-for-telemedicine/</link>
+      <link>https://nemathahmed.github.io/posts/2021-01-25-the-2020s-big-decade-for-telemedicine/</link>
       <pubDate>Mon, 25 Jan 2021 09:00:00 +0000</pubDate>
       
-      <guid>/posts/2021-01-25-the-2020s-big-decade-for-telemedicine/</guid>
+      <guid>https://nemathahmed.github.io/posts/2021-01-25-the-2020s-big-decade-for-telemedicine/</guid>
       <description>The 2020s: A Big Decade for Telemedicine Originally Published in Geek Culture
 The Growth Attributed to the Pandemic Photo by Daan Stevens on Unsplash
  The Pandemic taught us something essential — the value of healthcare.
@@ -23,10 +23,10 @@ What we can learn from this experience is that we need something more than the e
     
     <item>
       <title>How do AI-Based fitness trackers work? Ft. 1D CNNs</title>
-      <link>/posts/2020-06-15-how-do-ai-based-fitness-trakers-work/</link>
+      <link>https://nemathahmed.github.io/posts/2020-06-15-how-do-ai-based-fitness-trakers-work/</link>
       <pubDate>Mon, 15 Jun 2020 09:00:00 +0000</pubDate>
       
-      <guid>/posts/2020-06-15-how-do-ai-based-fitness-trakers-work/</guid>
+      <guid>https://nemathahmed.github.io/posts/2020-06-15-how-do-ai-based-fitness-trakers-work/</guid>
       <description>An article on how the algorithms that come with AI-based fitness trackers for activity recognition work and a brief introduction to 1D-CNNs. Also published on Start it up.
  Art by me :)
 Fitness trackers are extremely à la mode these days. You see many people rocking one and it is indeed quite a novel piece of tech. But have you ever wondered how these devices work, be it a fitness wrist band recording all your sprints and strolls or a mobile phone counting your steps?</description>

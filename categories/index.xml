@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Nemath Ahmed</title>
-    <link>/categories/</link>
+    <link>https://nemathahmed.github.io/categories/</link>
     <description>Recent content in Categories on Nemath Ahmed</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Nemath Ahmed</copyright><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Nemath Ahmed</copyright><atom:link href="https://nemathahmed.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

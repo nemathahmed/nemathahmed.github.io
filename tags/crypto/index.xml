@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Crypto on Nemath Ahmed</title>
-    <link>/tags/crypto/</link>
+    <link>https://nemathahmed.github.io/tags/crypto/</link>
     <description>Recent content in Crypto on Nemath Ahmed</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Nemath Ahmed</copyright>
-    <lastBuildDate>Mon, 07 Jun 2021 09:00:00 +0000</lastBuildDate><atom:link href="/tags/crypto/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Jun 2021 09:00:00 +0000</lastBuildDate><atom:link href="https://nemathahmed.github.io/tags/crypto/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The Crypto Consensus Mechanism</title>
-      <link>/posts/2021-06-07-the-crypto-consensus-mechanism/</link>
+      <link>https://nemathahmed.github.io/posts/2021-06-07-the-crypto-consensus-mechanism/</link>
       <pubDate>Mon, 07 Jun 2021 09:00:00 +0000</pubDate>
       
-      <guid>/posts/2021-06-07-the-crypto-consensus-mechanism/</guid>
+      <guid>https://nemathahmed.github.io/posts/2021-06-07-the-crypto-consensus-mechanism/</guid>
       <description>The Crypto Consensus Mechanism Originally Published in Predict
 Who’s the authority here? Cryptocurrency has been in the limelight for the past few months. With its universal and decentralized aspects, many aren’t shying away from calling it the currency of the future. There are more than four thousand cryptocurrencies in existence, and their number has been on the rise.
 Photo by Dmitry Demidko on Unsplash
