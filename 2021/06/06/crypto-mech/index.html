@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="The Crypto Consensus MechanismWho’s the authority here?Cryptocurrency has been in the limelight for the past few months. With its universal and decentralized aspects, many aren’t shying away from call">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Crypto Consensus Mechanism">
+<meta property="og:url" content="http://nemathahmed.github.io/2021/06/06/crypto-mech/index.html">
+<meta property="og:site_name" content="Nemath Ahmed">
+<meta property="og:description" content="The Crypto Consensus MechanismWho’s the authority here?Cryptocurrency has been in the limelight for the past few months. With its universal and decentralized aspects, many aren’t shying away from call">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/12000/1*DTOvqi9iH6b5guK8p0_hyg.jpeg">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/7912/1*poXRRZdZAElrrP9C3ZQLoQ.jpeg">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/8480/1*p7wcICmvAVUqqxtM9kbI9w.jpeg">
+<meta property="article:published_time" content="2021-06-06T04:00:00.000Z">
+<meta property="article:modified_time" content="2024-01-14T06:24:47.328Z">
+<meta property="article:author" content="Nemath Ahmed">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn-images-1.medium.com/max/12000/1*DTOvqi9iH6b5guK8p0_hyg.jpeg">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>The Crypto Consensus Mechanism</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2021/06/15/how-do-fitness/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2021/01/10/my-data-intern/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://nemathahmed.github.io/2021/06/06/crypto-mech/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://nemathahmed.github.io/2021/06/06/crypto-mech/&text=The Crypto Consensus Mechanism"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://nemathahmed.github.io/2021/06/06/crypto-mech/&title=The Crypto Consensus Mechanism"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://nemathahmed.github.io/2021/06/06/crypto-mech/&is_video=false&description=The Crypto Consensus Mechanism"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=The Crypto Consensus Mechanism&body=Check out this article: http://nemathahmed.github.io/2021/06/06/crypto-mech/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://nemathahmed.github.io/2021/06/06/crypto-mech/&title=The Crypto Consensus Mechanism"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://nemathahmed.github.io/2021/06/06/crypto-mech/&title=The Crypto Consensus Mechanism"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://nemathahmed.github.io/2021/06/06/crypto-mech/&title=The Crypto Consensus Mechanism"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://nemathahmed.github.io/2021/06/06/crypto-mech/&title=The Crypto Consensus Mechanism"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://nemathahmed.github.io/2021/06/06/crypto-mech/&name=The Crypto Consensus Mechanism&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://nemathahmed.github.io/2021/06/06/crypto-mech/&t=The Crypto Consensus Mechanism"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Crypto-Consensus-Mechanism"><span class="toc-number">1.</span> <span class="toc-text">The Crypto Consensus Mechanism</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Who%E2%80%99s-the-authority-here"><span class="toc-number">1.1.</span> <span class="toc-text">Who’s the authority here?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Consensus-Mechanism"><span class="toc-number">2.</span> <span class="toc-text">The Consensus Mechanism</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PoW-Mechanism"><span class="toc-number">3.</span> <span class="toc-text">PoW Mechanism</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%80%9CPoW-describes-a-system-that-requires-a-not-insignificant-but-feasible-amount-of-effort-in-order-to-deter-malicious-uses-of-computing-power-%E2%80%9D-%E2%80%94-Jake-Investopedia"><span class="toc-number"></span> <span class="toc-text">“PoW describes a system that requires a not-insignificant but feasible amount of effort in order to deter malicious uses of computing power.” — Jake, Investopedia</span></a>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        The Crypto Consensus Mechanism
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Nemath Ahmed</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-06-06T04:00:00.000Z" class="dt-published" itemprop="datePublished">2021-06-06</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="The-Crypto-Consensus-Mechanism"><a href="#The-Crypto-Consensus-Mechanism" class="headerlink" title="The Crypto Consensus Mechanism"></a>The Crypto Consensus Mechanism</h2><h3 id="Who’s-the-authority-here"><a href="#Who’s-the-authority-here" class="headerlink" title="Who’s the authority here?"></a>Who’s the authority here?</h3><p>Cryptocurrency has been in the limelight for the past few months. With its universal and decentralized aspects, many aren’t shying away from calling it the currency of the future. There are more than four thousand cryptocurrencies in existence, and their number has been on the rise.</p>
+<p><img src="https://cdn-images-1.medium.com/max/12000/1*DTOvqi9iH6b5guK8p0_hyg.jpeg" alt="Photo by [Dmitry Demidko](https://unsplash.com/@wildbook?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/bitcoin?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)"></p>
+<p>For jumping on the bandwagon of the cryptocurrency craze, many startups in the past few years have been considering Initial Coin Offerings or ICOs. According to CNBC, almost half of the ICOs fail.</p>
+<p>Apart from ICOs, there are various reasons for which online businesses opt to start a new cryptocurrency. This may be to access a new customer base, eliminate fraud risks, or simply for transaction anonymity. From the idea of creating new crypto to actually launching it, there are a series of steps. The very first one of which is choosing a consensus mechanism.</p>
+<h2 id="The-Consensus-Mechanism"><a href="#The-Consensus-Mechanism" class="headerlink" title="The Consensus Mechanism"></a>The Consensus Mechanism</h2><p>In short, these are the protocols that consider a particular transaction legitimate and add it to the block. Let’s see what this means.</p>
+<p><img src="https://cdn-images-1.medium.com/max/7912/1*poXRRZdZAElrrP9C3ZQLoQ.jpeg" alt="Photo by [Taylor Vick](https://unsplash.com/@tvick?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/servers?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)"></p>
+<p>Blockchains, unlike centralized systems, are dynamically changing. A centrally stored driver license database can be updated only by a central administration with authority to ensure genuine records. However, with blockchain, it is a self-regulating system with no authority. This self-regulating system comprises millions of participants who work on the verification and authentication of transactions on the blockchain.</p>
+<p>For such a fast-changing status of blockchain, the shared ledgers need to be efficient, reliable, secure, and functional to verify the Genuity of the transactions and ensure all participants agree on the status of the ledger. This task is performed by the consensus mechanism — a set of rules to make decisions on the activities on the blockchain.</p>
+<h2 id="PoW-Mechanism"><a href="#PoW-Mechanism" class="headerlink" title="PoW Mechanism"></a>PoW Mechanism</h2><p>The most popular cryptocurrency today, Bitcoin, uses the Proof of Work (PoW) consensus mechanism. In the mechanism, the participant node has to achieve the right to add a new transaction to the blockchain by proving the work done.</p>
+<blockquote>
+<h1 id="“PoW-describes-a-system-that-requires-a-not-insignificant-but-feasible-amount-of-effort-in-order-to-deter-malicious-uses-of-computing-power-”-—-Jake-Investopedia"><a href="#“PoW-describes-a-system-that-requires-a-not-insignificant-but-feasible-amount-of-effort-in-order-to-deter-malicious-uses-of-computing-power-”-—-Jake-Investopedia" class="headerlink" title="“PoW describes a system that requires a not-insignificant but feasible amount of effort in order to deter malicious uses of computing power.” — Jake, Investopedia"></a>“PoW describes a system that requires a not-insignificant but feasible amount of effort in order to deter malicious uses of computing power.” — Jake, Investopedia</h1></blockquote>
+<p>This mechanism requires participants to spend efforts solving arbitrary math problems to prevent compromising the system from any frivolous attacks. This is also used in mining new tokens along with validating transactions.</p>
+<p>Such mechanisms help the crypto transaction to occur without the need for a trusted third party. This mechanism was originally created as a solution to spam emails, and the one used by Bitcoin is based on the SHA-256 hashing function.</p>
+<p>PoW makes it highly resource-intensive to overtake the network. Another mechanism known as Proof of Stake (PoS) allots mining power based on tokens held in the wallet. It randomly assigns the node that would mine or validate transactions based on coins the node holds. It is quite less resource-intensive compared to PoW but has a risk of 51% attack in small altcoins.</p>
+<p><img src="https://cdn-images-1.medium.com/max/8480/1*p7wcICmvAVUqqxtM9kbI9w.jpeg" alt="Photo by [André François McKenzie](https://unsplash.com/@silverhousehd?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/bitcoin?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)"></p>
+<p>The consensus mechanism you choose will pave the road for the next steps in creating your crypto, which includes picking a blockchain platform, designing the nodes, building the architecture, and so forth. Today’s best blockchain platforms include Ethereum, Waves, and NEM, and the Transparency, security, and fraud prevention they provide make them quite desirable for many online businesses.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Crypto-Consensus-Mechanism"><span class="toc-number">1.</span> <span class="toc-text">The Crypto Consensus Mechanism</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Who%E2%80%99s-the-authority-here"><span class="toc-number">1.1.</span> <span class="toc-text">Who’s the authority here?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Consensus-Mechanism"><span class="toc-number">2.</span> <span class="toc-text">The Consensus Mechanism</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PoW-Mechanism"><span class="toc-number">3.</span> <span class="toc-text">PoW Mechanism</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%80%9CPoW-describes-a-system-that-requires-a-not-insignificant-but-feasible-amount-of-effort-in-order-to-deter-malicious-uses-of-computing-power-%E2%80%9D-%E2%80%94-Jake-Investopedia"><span class="toc-number"></span> <span class="toc-text">“PoW describes a system that requires a not-insignificant but feasible amount of effort in order to deter malicious uses of computing power.” — Jake, Investopedia</span></a>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://nemathahmed.github.io/2021/06/06/crypto-mech/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://nemathahmed.github.io/2021/06/06/crypto-mech/&text=The Crypto Consensus Mechanism"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://nemathahmed.github.io/2021/06/06/crypto-mech/&title=The Crypto Consensus Mechanism"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://nemathahmed.github.io/2021/06/06/crypto-mech/&is_video=false&description=The Crypto Consensus Mechanism"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=The Crypto Consensus Mechanism&body=Check out this article: http://nemathahmed.github.io/2021/06/06/crypto-mech/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://nemathahmed.github.io/2021/06/06/crypto-mech/&title=The Crypto Consensus Mechanism"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://nemathahmed.github.io/2021/06/06/crypto-mech/&title=The Crypto Consensus Mechanism"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://nemathahmed.github.io/2021/06/06/crypto-mech/&title=The Crypto Consensus Mechanism"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://nemathahmed.github.io/2021/06/06/crypto-mech/&title=The Crypto Consensus Mechanism"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://nemathahmed.github.io/2021/06/06/crypto-mech/&name=The Crypto Consensus Mechanism&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://nemathahmed.github.io/2021/06/06/crypto-mech/&t=The Crypto Consensus Mechanism"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    Nemath Ahmed
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="How do AI-Based fitness trackers work? Ft. 1D CNNs  An article on how the algorithms that come with AI-based fitness trackers for activity recognition work and a brief introduction to 1D-CNNs. Origina">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How do AI-Based fitness trackers work? Ft. 1D CNNs">
+<meta property="og:url" content="http://nemathahmed.github.io/2021/06/15/how-do-fitness/index.html">
+<meta property="og:site_name" content="Nemath Ahmed">
+<meta property="og:description" content="How do AI-Based fitness trackers work? Ft. 1D CNNs  An article on how the algorithms that come with AI-based fitness trackers for activity recognition work and a brief introduction to 1D-CNNs. Origina">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/4620/1*Pjm1_gVJLGi0f8ZQ9lljJw.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/0*oLn8yi5vCmwEr04k.gif">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/0*lER8XJjJ-aS6cR9_.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/0*UL3-VNYxlLkgT1eH.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/0*ygpp_aVWCLZvS5U8.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/0*s-6M3HJifQsnFwet.png">
+<meta property="article:published_time" content="2021-06-15T04:00:00.000Z">
+<meta property="article:modified_time" content="2024-01-14T06:27:50.068Z">
+<meta property="article:author" content="Nemath Ahmed">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn-images-1.medium.com/max/4620/1*Pjm1_gVJLGi0f8ZQ9lljJw.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>How do AI-Based fitness trackers work? Ft. 1D CNNs</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2021/06/21/why-with-why/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2021/06/06/crypto-mech/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://nemathahmed.github.io/2021/06/15/how-do-fitness/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://nemathahmed.github.io/2021/06/15/how-do-fitness/&text=How do AI-Based fitness trackers work? Ft. 1D CNNs"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://nemathahmed.github.io/2021/06/15/how-do-fitness/&title=How do AI-Based fitness trackers work? Ft. 1D CNNs"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://nemathahmed.github.io/2021/06/15/how-do-fitness/&is_video=false&description=How do AI-Based fitness trackers work? Ft. 1D CNNs"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How do AI-Based fitness trackers work? Ft. 1D CNNs&body=Check out this article: http://nemathahmed.github.io/2021/06/15/how-do-fitness/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://nemathahmed.github.io/2021/06/15/how-do-fitness/&title=How do AI-Based fitness trackers work? Ft. 1D CNNs"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://nemathahmed.github.io/2021/06/15/how-do-fitness/&title=How do AI-Based fitness trackers work? Ft. 1D CNNs"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://nemathahmed.github.io/2021/06/15/how-do-fitness/&title=How do AI-Based fitness trackers work? Ft. 1D CNNs"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://nemathahmed.github.io/2021/06/15/how-do-fitness/&title=How do AI-Based fitness trackers work? Ft. 1D CNNs"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://nemathahmed.github.io/2021/06/15/how-do-fitness/&name=How do AI-Based fitness trackers work? Ft. 1D CNNs&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://nemathahmed.github.io/2021/06/15/how-do-fitness/&t=How do AI-Based fitness trackers work? Ft. 1D CNNs"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How-do-AI-Based-fitness-trackers-work-Ft-1D-CNNs"><span class="toc-number">1.</span> <span class="toc-text">How do AI-Based fitness trackers work? Ft. 1D CNNs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">2.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-hypothetical-situation"><span class="toc-number">3.</span> <span class="toc-text">A hypothetical situation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Incisive-Analysis"><span class="toc-number">4.</span> <span class="toc-text">Incisive Analysis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Operating-on-data-with-statistics"><span class="toc-number">5.</span> <span class="toc-text">Operating on data with statistics</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Introducing-1D-CNNs"><span class="toc-number">6.</span> <span class="toc-text">Introducing 1D CNNs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Building-the-Architecture"><span class="toc-number">7.</span> <span class="toc-text">Building the Architecture</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tuning-Training"><span class="toc-number">8.</span> <span class="toc-text">Tuning &amp; Training</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Few-Tips"><span class="toc-number">9.</span> <span class="toc-text">Few Tips</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Happy-Ending"><span class="toc-number">10.</span> <span class="toc-text">Happy Ending</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        How do AI-Based fitness trackers work? Ft. 1D CNNs
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Nemath Ahmed</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-06-15T04:00:00.000Z" class="dt-published" itemprop="datePublished">2021-06-15</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="How-do-AI-Based-fitness-trackers-work-Ft-1D-CNNs"><a href="#How-do-AI-Based-fitness-trackers-work-Ft-1D-CNNs" class="headerlink" title="How do AI-Based fitness trackers work? Ft. 1D CNNs"></a>How do AI-Based fitness trackers work? Ft. 1D CNNs</h2><blockquote>
+<p> An article on how the algorithms that come with AI-based fitness trackers for activity recognition work and a brief introduction to 1D-CNNs. <em>Originally written on my blog <a target="_blank" rel="noopener" href="https://pixelpie.org/how-do-ai-based-fitness-trackers-work/">PixelPie.org</a></em></p>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/4620/1*Pjm1_gVJLGi0f8ZQ9lljJw.png" alt="Art by me :)"></p>
+<p>Fitness trackers are extremely à la mode these days. You see many people rocking one and it is indeed quite a novel piece of tech. But have you ever wondered how these devices work, be it a fitness wrist band recording all your sprints and strolls or a mobile phone counting your steps? In this post, I’d like to share how activity recognition in fitness trackers or any automatic psychological signal trackers and analyzers work. I would also like to share my learnings working with similar techniques as a data scientist at <a target="_blank" rel="noopener" href="http://www.dozee.io/">Dozee</a>. We will see the flow of building an algorithm from start to end in brief through this post.</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Fitness trackers come under human-centered computing, which is an emerging field that aims to understand human behavior and integrate user and social context with the computer system. What these devices do is record signals produced by a user and then predict the physical activity. These signals can be some of the many physiological signals found to play a crucial role in determining human activity. In one such study by UCI, for human activity recognition, signals from accelerometers and gyroscopes from smartphones were used. A deep learning model was built to classify whether a person was walking: upstairs or downstairs, sitting, standing, or lying. They were able to deliver results with above 95% accuracy, which is pretty satisfactory.</p>
+<p>Now, let us see how, given a set of multichannel physiological signals, one can go about building an algorithm to classify an action into one of many possible classes. By multi-channel, I mean the signals from different sources or channels. In doing so, we are going to see how we can use 1-Dimensional Convolutional-Neural-Networks to perform these tasks. I’ll try to keep it simple with no-code so that by the end of the post, every reader is aware of what’s happening inside next time he&#x2F;she uses any smart trackers. Let’s dive right in.</p>
+<p>Almost all fitness trackers today host a 3-axis accelerometer and a gyroscope. Accelerometer gives the measure of movement in every direction and gyroscope gives the measure of rotation and orientation. These trackers might have a profusion of other sensors such as the altimeter to measure the altitudes, temperature sensor, etc. Some trackers also have an optical sensor that measures heart rate by illuminating capillaries and recording pulse rate. Let’s keep the focus of this post to track the physical activity of a person.</p>
+<h2 id="A-hypothetical-situation"><a href="#A-hypothetical-situation" class="headerlink" title="A hypothetical situation"></a>A hypothetical situation</h2><p>Let’s assume you work at a quotidian analog watch company that does nothing more than building simple analog watches. Suddenly, seeing a huge market for smart fitness trackers, CEO of the company approaches you and asks you to build an algorithm to detect the physical activity of a user, given that the smartwatch will come with a range of sensors including accelerometers, gyroscopes, optical sensors, altimeters, temperature sensors, etc.</p>
+<h2 id="Incisive-Analysis"><a href="#Incisive-Analysis" class="headerlink" title="Incisive Analysis"></a>Incisive Analysis</h2><p>A thorough analysis of the pre-existing data will be the very first task for us. This is an essential step as this forms the basis for our overall approach. Here, we have to make some crucial decisions on which of the many sensors we choose to make predictions on physical activity. This would involve an incisive visualization and interpretation of data, finding the interdependencies within the data, finding the factors that might have a negative influence on prediction, and eliminating them. In our particular case, we need to find a relation between the continuous physiological signal input data and the categorical(walking, jogging, running, etc.) output predictions.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*oLn8yi5vCmwEr04k.gif"></p>
+<p>There are many well-proven mathematical techniques such as Point Biserial correlation, Logistic Regression, and Kruskal Wallis H test that can help us find the relation between input signals and between input and output**. <a target="_blank" rel="noopener" href="https://medium.com/@outside2SDs/an-overview-of-correlation-measures-between-categorical-and-continuous-variables-4c7f85610365">**This is a good article that gives further insights on how to and when to perform these tests</a>**. **Again just to remind, this is the step where we are visualizing and interpreting the pre-existing data that we have.</p>
+<p>Let’s assume that after a lot of research, visualization, and inputs from industry experts we have narrowed it down to 6 signals, 3 from accelerometer each in a direction perpendicular to other, and 3 from Gyroscope, each along the axis perpendicular to other. So now, we have the signals that we’d be operating on later stages. As mentioned earlier, I’d give a lot of importance to this step as every other step below is based on decisions made here. Performing good research for selecting the input features in the first iteration itself can save you a lot of time, money, and energy.</p>
+<h2 id="Operating-on-data-with-statistics"><a href="#Operating-on-data-with-statistics" class="headerlink" title="Operating on data with statistics"></a>Operating on data with statistics</h2><p>After selecting prominent features responsible for activity tracking, we move on to some statistics. For the deep learning model to have a good time learning features, it is generally recommended to convert the raw feature signals in a form that is easier to perform operations on. This step is where you need to apply statistics and see what you can do to give the complete representation of data in a very effective manner. Standardization, Normalization techniques are commonly used to perform this. If you know that the data is evenly spread within a particular range with almost equal likelihood at every point, you can just perform a min-max normalization and bring the data value in the desired range(maybe from -1 to 1).</p>
+<p>The type of technique that you use is heavily dependent on the data you operate on. There are tons of articles that give you a good insight into when to use a specific technique. In our particular case, many features follow Gaussian distribution hence we can make data effective to operate on by using standardization. These techniques might sometime improve the accuracy by only a few decimals values; nonetheless, one must try not to skip this step.</p>
+<h2 id="Introducing-1D-CNNs"><a href="#Introducing-1D-CNNs" class="headerlink" title="Introducing 1D CNNs"></a>Introducing 1D CNNs</h2><p>Now we have the 6 features in their best possible representations. All we need now is a good architecture that can help the model learn these features. One of the techniques that I want to introduce here is 1 Dimensional Convolutional Neural Networks(CNNs). People familiar with deep learning might already have an idea about CNNs in general and how they have proved to be building blocks of current state-of-the-art computer vision techniques. To just give a simple introduction to CNNs, they are good feature extractors and are heavily used in object detection. In image classification tasks, small windows(feature detectors) roll through the image from left-to-right and from top-to-bottom extracting features at each step.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*lER8XJjJ-aS6cR9_.png"></p>
+<p>These kernels(small windows) move in both horizontal and vertical directions, hence, ‘2D’ in the name.</p>
+<p>What we want to do with our signals is also to extract the features, and we now know CNNs extract them well, so why not use CNN operations? Now the question is how we use a technique that is originally made for images on raw data. Images are nothing but a 3D array in which each cell holds a pixel value. In single-channel images, we just have a 2D array where each cell holds value(For more information on single-channel gray-scale images, check out my post on <a target="_blank" rel="noopener" href="https://pixelpie.org/b-w-monitors-are-not-exactly-b-w-quickie/">grayscale televisions</a>). The idea here is to make a 2D array which will hold our feature values instead of pixel values. What if we stack the features vertically with each row representing a feature for 30 seconds duration. Assuming each value is being recorded every second with 30 seconds we get 30 values for each of the 6 features. Hence a 2D Matrix of size 6×30 can be constructed, similar to the figure given below. The six boxes along the vertical axis represent 6 features. The boxes along the horizontal axis give the values of a feature at consecutive time-stamps(1-second in our case).</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*UL3-VNYxlLkgT1eH.png"></p>
+<p>Unlike 2D CNNs, it won’t make sense to take a small feature detector and move it from left to right and top to bottom since we want “all features” to be considered at every time-step. In other words, there is no need for a small feature detector to move from top-to-bottom. We need a feature detector whose vertical-width is equal to the number of features. We can assign this detector a horizontal-height and move it from left to right extracting features at every step and this is what is called 1D Convolutional Operations where the movement of feature detectors is only along one axis. In many other instances as well, where we deal with time-series data(data whose x-axis is time), 1D CNNs stand a good chance to bring out features.</p>
+<h2 id="Building-the-Architecture"><a href="#Building-the-Architecture" class="headerlink" title="Building the Architecture"></a>Building the Architecture</h2><p><img src="https://cdn-images-1.medium.com/max/2000/0*ygpp_aVWCLZvS5U8.png"></p>
+<p>Now we have the features and the technique that we’ll be using to build the architecture. From my experience working with other data scientists, it’s good to first get the complete pipeline ready and not waste time trying to build the perfect architecture that might fail to fit in that architecture. It’s better to build a scaffold model, a very naive and simple model, just to make sure that the complete pipeline from the very start to the final architecture stage has no issues. This model can be as simple as having two 1D-CNN layers followed by a couple of fully connected layers.</p>
+<p>Once we have the overall pipeline working and we have some benchmark scores from our scaffold run, we are good to go and start building better architectures. We will not be discussing the code here as there are already pretty good articles that do that. <a target="_blank" rel="noopener" href="https://machinelearningmastery.com/cnn-models-for-human-activity-recognition-time-series-classification/">This article</a> by Jason will give you a thorough drive through the code involved. Good thing is that our example matches the kind of data that Jason writes code for, so you can dive right into writing the architecture for our example with the help of his article. I recommend reading it as it might also cover a few points that I couldn’t cover here.</p>
+<h2 id="Tuning-Training"><a href="#Tuning-Training" class="headerlink" title="Tuning &amp; Training"></a>Tuning &amp; Training</h2><p>Once we have the skeleton of architecture ready, we can start training the model. There are many machine learning parameters such as learning rate, batch size, epochs, etc. that can be set by us and some can have a profound effect on the training process. There are tons of well-written articles about these parameters and how one goes about playing with them. ‘Hyperparameter tuning methods’ section <a target="_blank" rel="noopener" href="https://www.jeremyjordan.me/hyperparameter-tuning/">in this article</a> by Jeremy gives a good insight and holds the potential to reduce efforts on your expedition to find the perfect hyper-parameters. If you are using TensorFlow, I’d recommend taking advantage of tensorboard which gives you a brief summary of the training process.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*s-6M3HJifQsnFwet.png"></p>
+<p>Assuming all steps were followed well, you should be getting pretty good scores for this particular task of activity recognition. Apart from sequential architectures in which each layer follows the other, you can even try building multi-headed architectures that might boost up the accuracies. I’ll be writing a separate post on multi-headed CNNs soon.</p>
+<h2 id="Few-Tips"><a href="#Few-Tips" class="headerlink" title="Few Tips"></a>Few Tips</h2><p>Some times you may find that your model is performing really bad even after trying with a gamut of hyper-parameters. The first thing I’d recommend to do in such cases is checking the training data. Make sure it is exactly what you expect it to be, focus on how you are handling the missing data points, and make sure you don’t send NA&#x2F;NaN data points to the model. Make sure you are using proper activation functions, optimizers, and loss functions for training the model. Keep a check if the model is overfitting or underfitting by providing it with an unseen test dataset and evaluating it.</p>
+<h2 id="Happy-Ending"><a href="#Happy-Ending" class="headerlink" title="Happy Ending"></a>Happy Ending</h2><p>After multiple iterations on this training pipeline, you finally succeed in building a model with a high-grade score that is ready to be deployed and moved on to the server. Now what you have is a deep learning model that takes raw physiological signals as inputs and returns the activity that a person is performing. You present it to the production team and now the brand new smart tracker comes with your algorithms in it. Everyone in the team is happy.</p>
+<blockquote>
+<p> I hope you enjoyed reading this post on how fitness trackers and algorithms running beneath work. Let me know in the comments or through e-mail (<a href="mailto:&#110;&#101;&#109;&#x61;&#116;&#x68;&#64;&#112;&#105;&#120;&#x65;&#108;&#x70;&#x69;&#x65;&#46;&#x6f;&#x72;&#x67;">&#110;&#101;&#109;&#x61;&#116;&#x68;&#64;&#112;&#105;&#120;&#x65;&#108;&#x70;&#x69;&#x65;&#46;&#x6f;&#x72;&#x67;</a>) if you have any suggestions. Also, do visit <a target="_blank" rel="noopener" href="https://pixelpie.org/">PixelPie.org </a>for more such articles on AI and Tech. Pixel Pie has been something I wanted to do for a long time, and now that I have finally started it, I’d really appreciate your help and support. I also plan on starting a weekly tech podcast complementing the posts, bringing fresh ideas and innovations from across the globe. Let me know what you think about it.</p>
+</blockquote>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How-do-AI-Based-fitness-trackers-work-Ft-1D-CNNs"><span class="toc-number">1.</span> <span class="toc-text">How do AI-Based fitness trackers work? Ft. 1D CNNs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">2.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-hypothetical-situation"><span class="toc-number">3.</span> <span class="toc-text">A hypothetical situation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Incisive-Analysis"><span class="toc-number">4.</span> <span class="toc-text">Incisive Analysis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Operating-on-data-with-statistics"><span class="toc-number">5.</span> <span class="toc-text">Operating on data with statistics</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Introducing-1D-CNNs"><span class="toc-number">6.</span> <span class="toc-text">Introducing 1D CNNs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Building-the-Architecture"><span class="toc-number">7.</span> <span class="toc-text">Building the Architecture</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tuning-Training"><span class="toc-number">8.</span> <span class="toc-text">Tuning &amp; Training</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Few-Tips"><span class="toc-number">9.</span> <span class="toc-text">Few Tips</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Happy-Ending"><span class="toc-number">10.</span> <span class="toc-text">Happy Ending</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://nemathahmed.github.io/2021/06/15/how-do-fitness/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://nemathahmed.github.io/2021/06/15/how-do-fitness/&text=How do AI-Based fitness trackers work? Ft. 1D CNNs"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://nemathahmed.github.io/2021/06/15/how-do-fitness/&title=How do AI-Based fitness trackers work? Ft. 1D CNNs"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://nemathahmed.github.io/2021/06/15/how-do-fitness/&is_video=false&description=How do AI-Based fitness trackers work? Ft. 1D CNNs"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How do AI-Based fitness trackers work? Ft. 1D CNNs&body=Check out this article: http://nemathahmed.github.io/2021/06/15/how-do-fitness/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://nemathahmed.github.io/2021/06/15/how-do-fitness/&title=How do AI-Based fitness trackers work? Ft. 1D CNNs"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://nemathahmed.github.io/2021/06/15/how-do-fitness/&title=How do AI-Based fitness trackers work? Ft. 1D CNNs"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://nemathahmed.github.io/2021/06/15/how-do-fitness/&title=How do AI-Based fitness trackers work? Ft. 1D CNNs"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://nemathahmed.github.io/2021/06/15/how-do-fitness/&title=How do AI-Based fitness trackers work? Ft. 1D CNNs"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://nemathahmed.github.io/2021/06/15/how-do-fitness/&name=How do AI-Based fitness trackers work? Ft. 1D CNNs&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://nemathahmed.github.io/2021/06/15/how-do-fitness/&t=How do AI-Based fitness trackers work? Ft. 1D CNNs"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    Nemath Ahmed
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
