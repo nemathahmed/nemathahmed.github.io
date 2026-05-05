@@ -7,6 +7,17 @@
   const soundToggle = document.querySelector("[data-sound-toggle]");
   const chordTabs = Array.from(document.querySelectorAll("[data-chord]"));
   const chordLabel = document.querySelector("[data-chord-label]");
+  const disciplineCard = document.querySelector("[data-discipline-card]");
+  const cardToggles = Array.from(document.querySelectorAll("[data-card-toggle]"));
+  const timerRoot = document.querySelector("[data-round-timer]");
+  const timerPhase = document.querySelector("[data-timer-phase]");
+  const timerTime = document.querySelector("[data-timer-time]");
+  const timerRound = document.querySelector("[data-timer-round]");
+  const timerProgress = document.querySelector("[data-timer-progress]");
+  const timerSummary = document.querySelector("[data-timer-summary]");
+  const timerStart = document.querySelector("[data-timer-start]");
+  const timerReset = document.querySelector("[data-timer-reset]");
+  const timerPresetButtons = Array.from(document.querySelectorAll("[data-timer-preset]"));
 
   const CHORDS = {
     am: {
@@ -188,6 +199,164 @@
   }
 
   applyChord(activeChordKey, { play: false });
+
+  const setCardFlipped = (isFlipped) => {
+    if (!disciplineCard) return;
+    disciplineCard.classList.toggle("is-flipped", isFlipped);
+    cardToggles.forEach((button) => {
+      button.setAttribute("aria-pressed", isFlipped ? "true" : "false");
+    });
+  };
+
+  cardToggles.forEach((button) => {
+    button.addEventListener("click", () => {
+      setCardFlipped(!disciplineCard?.classList.contains("is-flipped"));
+    });
+  });
+
+  const TIMER_PRESETS = {
+    boxing: { label: "Boxing", rounds: 3, work: 180, rest: 60 },
+    muay: { label: "Muay Thai", rounds: 5, work: 180, rest: 60 },
+    focus: { label: "Focus", rounds: 1, work: 1500, rest: 0 },
+  };
+
+  let activeTimerPreset = "boxing";
+  let timerMode = "work";
+  let activeRound = 1;
+  let remainingSeconds = TIMER_PRESETS.boxing.work;
+  let timerRunning = false;
+  let timerInterval = null;
+  let lastTimerTick = 0;
+
+  const formatSeconds = (seconds) => {
+    const safeSeconds = Math.max(0, Math.floor(seconds));
+    const minutes = Math.floor(safeSeconds / 60);
+    const remainder = safeSeconds % 60;
+    return `${String(minutes).padStart(2, "0")}:${String(remainder).padStart(2, "0")}`;
+  };
+
+  const getTimerPreset = () => TIMER_PRESETS[activeTimerPreset] || TIMER_PRESETS.boxing;
+
+  const stopRoundTimer = () => {
+    timerRunning = false;
+    if (timerInterval) window.clearInterval(timerInterval);
+    timerInterval = null;
+  };
+
+  const playTimerBell = () => {
+    if (!soundEnabled) return;
+    playFrequency(880, 0, 0.12);
+    playFrequency(660, 0.12, 0.08);
+  };
+
+  const renderRoundTimer = () => {
+    if (!timerRoot) return;
+    const preset = getTimerPreset();
+    const phaseTotal = timerMode === "rest" ? preset.rest : preset.work;
+    const elapsed = timerMode === "done" ? phaseTotal : phaseTotal - remainingSeconds;
+    const progress = phaseTotal > 0 ? Math.min(100, Math.max(0, (elapsed / phaseTotal) * 100)) : 100;
+
+    if (timerPhase) timerPhase.textContent = timerMode === "done" ? "Done" : timerMode === "rest" ? "Rest" : "Work";
+    if (timerTime) timerTime.textContent = timerMode === "done" ? "00:00" : formatSeconds(remainingSeconds);
+    if (timerRound) {
+      timerRound.textContent = timerMode === "done"
+        ? `${preset.label} complete`
+        : `Round ${activeRound} / ${preset.rounds}`;
+    }
+    if (timerProgress) timerProgress.style.width = `${progress}%`;
+    if (timerStart) timerStart.textContent = timerRunning ? "Pause" : "Start";
+    if (timerSummary) {
+      timerSummary.textContent = preset.rest > 0
+        ? `${preset.rounds} rounds · ${formatSeconds(preset.work)} work · ${formatSeconds(preset.rest)} rest`
+        : `${preset.rounds} round · ${formatSeconds(preset.work)} work`;
+    }
+    timerPresetButtons.forEach((button) => {
+      button.classList.toggle("is-active", button.dataset.timerPreset === activeTimerPreset);
+    });
+  };
+
+  const resetRoundTimer = () => {
+    stopRoundTimer();
+    const preset = getTimerPreset();
+    timerMode = "work";
+    activeRound = 1;
+    remainingSeconds = preset.work;
+    renderRoundTimer();
+  };
+
+  const completeRoundTimer = () => {
+    stopRoundTimer();
+    timerMode = "done";
+    remainingSeconds = 0;
+    playTimerBell();
+    renderRoundTimer();
+  };
+
+  const advanceRoundTimer = () => {
+    const preset = getTimerPreset();
+
+    if (timerMode === "work") {
+      if (activeRound >= preset.rounds) {
+        completeRoundTimer();
+        return;
+      }
+      playTimerBell();
+      if (preset.rest > 0) {
+        timerMode = "rest";
+        remainingSeconds = preset.rest;
+      } else {
+        activeRound += 1;
+        remainingSeconds = preset.work;
+      }
+    } else {
+      playTimerBell();
+      activeRound += 1;
+      timerMode = "work";
+      remainingSeconds = preset.work;
+    }
+
+    renderRoundTimer();
+  };
+
+  const tickRoundTimer = () => {
+    const now = Date.now();
+    const elapsedSeconds = Math.floor((now - lastTimerTick) / 1000);
+    if (elapsedSeconds < 1) return;
+    lastTimerTick += elapsedSeconds * 1000;
+    remainingSeconds = Math.max(0, remainingSeconds - elapsedSeconds);
+    if (remainingSeconds === 0) advanceRoundTimer();
+    else renderRoundTimer();
+  };
+
+  if (timerStart) {
+    timerStart.addEventListener("click", () => {
+      if (timerRunning) {
+        stopRoundTimer();
+        renderRoundTimer();
+        return;
+      }
+
+      if (timerMode === "done") resetRoundTimer();
+      ensureAudio();
+      timerRunning = true;
+      lastTimerTick = Date.now();
+      timerInterval = window.setInterval(tickRoundTimer, 250);
+      renderRoundTimer();
+    });
+  }
+
+  if (timerReset) {
+    timerReset.addEventListener("click", resetRoundTimer);
+  }
+
+  timerPresetButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      activeTimerPreset = button.dataset.timerPreset || activeTimerPreset;
+      resetRoundTimer();
+    });
+  });
+
+  renderRoundTimer();
 
   const startGridField = () => {
     const canvas = document.querySelector("[data-grid-field]");

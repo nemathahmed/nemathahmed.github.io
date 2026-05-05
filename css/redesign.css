@@ -296,21 +296,61 @@ main,
   color: var(--blue);
 }
 
-.guitar-panel {
+.discipline-card {
   position: relative;
   align-self: stretch;
-  min-height: 520px;
+  min-height: 540px;
+  perspective: 1400px;
+}
+
+.discipline-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  transform-style: preserve-3d;
+  transition: transform .7s var(--ease);
+}
+
+.discipline-card.is-flipped .discipline-card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  min-height: inherit;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card-face-back {
+  transform: rotateY(180deg);
+}
+
+.guitar-panel,
+.boxing-panel {
   display: grid;
   grid-template-rows: auto 1fr auto;
   gap: 28px;
   padding: clamp(22px, 4vw, 34px);
-  background:
-    linear-gradient(135deg, rgba(255, 253, 248, .92), rgba(220, 232, 230, .92)),
-    var(--mist);
   border: 1px solid var(--ink);
   border-radius: 8px;
   box-shadow: 10px 10px 0 var(--ink);
-  overflow: hidden;
+}
+
+.guitar-panel {
+  background:
+    linear-gradient(135deg, rgba(255, 253, 248, .92), rgba(220, 232, 230, .92)),
+    var(--mist);
+}
+
+.boxing-panel {
+  background:
+    linear-gradient(135deg, rgba(255, 253, 248, .95), rgba(200, 66, 50, .08)),
+    repeating-linear-gradient(135deg, rgba(23, 22, 21, .035) 0 1px, transparent 1px 12px),
+    var(--paper);
 }
 
 .guitar-panel::before {
@@ -325,16 +365,72 @@ main,
   transition: border-color .25s var(--ease);
 }
 
-.guitar-copy {
+.boxing-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7px;
+  background: repeating-linear-gradient(90deg, var(--accent) 0 28px, var(--ink) 28px 30px);
+}
+
+.card-flip-toggle {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 5;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  background: rgba(255, 253, 248, .86);
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform .2s var(--ease), background .2s var(--ease), color .2s var(--ease);
+}
+
+.card-flip-toggle:hover {
+  transform: translateY(-1px);
+  background: var(--ink);
+  color: var(--white);
+}
+
+.card-flip-toggle svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.card-flip-toggle svg path:first-child {
+  fill: rgba(255, 253, 248, .25);
+}
+
+.guitar-copy,
+.timer-copy {
   position: relative;
   z-index: 1;
 }
 
-.guitar-copy h2 {
+.guitar-copy h2,
+.timer-copy h2 {
   max-width: 320px;
   margin-top: 12px;
   font-size: clamp(34px, 5vw, 58px);
+}
+
+.guitar-copy h2 {
   color: var(--blue);
+}
+
+.timer-copy h2 {
+  color: var(--ink);
 }
 
 .chord-tabs {
@@ -474,6 +570,106 @@ main,
 .sound-toggle[aria-pressed="true"] {
   background: var(--ink);
   color: var(--white);
+}
+
+.timer-display {
+  position: relative;
+  z-index: 1;
+  align-self: center;
+  display: grid;
+  gap: 8px;
+  padding: clamp(18px, 4vw, 28px) 0 12px;
+}
+
+.timer-display span {
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.timer-display strong {
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: clamp(72px, 12vw, 132px);
+  font-weight: 600;
+  letter-spacing: -.07em;
+  line-height: .84;
+}
+
+.timer-progress {
+  position: relative;
+  z-index: 1;
+  height: 12px;
+  overflow: hidden;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: rgba(255, 253, 248, .74);
+}
+
+.timer-progress span {
+  display: block;
+  width: 0%;
+  height: 100%;
+  background: var(--accent);
+  transition: width .25s linear, background .2s var(--ease);
+}
+
+.timer-presets {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--line);
+}
+
+.timer-presets button,
+.timer-controls button {
+  min-height: 40px;
+  border: 0;
+  background: rgba(255, 253, 248, .82);
+  color: var(--ink-muted);
+  font: 600 12px/1 var(--sans);
+  cursor: pointer;
+  transition: background .2s var(--ease), color .2s var(--ease);
+}
+
+.timer-presets button.is-active {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.timer-controls {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
+.timer-controls button {
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+}
+
+.timer-controls button:first-child {
+  background: var(--accent);
+  color: var(--white);
+}
+
+.timer-summary {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--ink-muted);
+  font-family: var(--mono);
+  font-size: 12px;
+  text-transform: uppercase;
 }
 
 .about-section,
@@ -786,8 +982,12 @@ main,
     grid-template-columns: 1fr;
   }
 
-  .guitar-panel {
-    min-height: 440px;
+  .discipline-card {
+    min-height: 540px;
+  }
+
+  .guitar-panel,
+  .boxing-panel {
     box-shadow: 7px 7px 0 var(--ink);
   }
 
@@ -846,9 +1046,23 @@ main,
     gap: 8px;
   }
 
-  .guitar-panel {
-    min-height: 390px;
+  .discipline-card {
+    min-height: 560px;
+  }
+
+  .guitar-panel,
+  .boxing-panel {
     padding: 20px;
+  }
+
+  .card-flip-toggle {
+    top: 14px;
+    right: 14px;
+  }
+
+  .timer-presets {
+    grid-template-columns: 1fr;
+    border-radius: 14px;
   }
 
   .chord-tabs {
