@@ -45,6 +45,7 @@
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/read.css">
 
     <!-- persian styles -->
     
@@ -56,6 +57,13 @@
 <meta name="generator" content="Hexo 7.0.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
+<div class="read-progress"></div>
+<div class="read-noise" aria-hidden="true"></div>
+<div class="read-nav">
+  <a href="/" aria-label="Home"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> HOME</a>
+  <a href="/archives/">WRITING →</a>
+</div>
+
     
     <div class="content index py4 ">
         
@@ -86,6 +94,30 @@
 
         
         <div id="archive">
+  <section class="archive-intro" aria-labelledby="archive-title">
+    <p class="archive-kicker">Writing</p>
+    <h1 id="archive-title">Notes, essays, and older pieces.</h1>
+    <p>Product work, research notes, school reflections, and whatever I am trying to understand clearly enough to explain.</p>
+  </section>
+
+  <section class="archive-start" aria-label="Start here">
+    <article class="archive-start-card">
+      <p>Most personal</p>
+      <a href="/2024/05/22/graduating-georgia-tech/">Graduating Georgia Tech</a>
+      <span>School, boxing, dotflo, moving, and choosing what kind of work is worth chasing.</span>
+    </article>
+    <article class="archive-start-card">
+      <p>Most technical</p>
+      <a href="/2021/08/04/what-is-data-platform/">What's A Data Platform Anyway?</a>
+      <span>A systems note for understanding how data moves, gets shaped, and becomes useful.</span>
+    </article>
+    <article class="archive-start-card">
+      <p>Most useful</p>
+      <a href="/2021/07/26/art-of-research/">The Art of Reading A Research Paper</a>
+      <span>A practical piece on slowing down, reading carefully, and finding the actual idea.</span>
+    </article>
+  </section>
+
   <ul class="post-list">
     
     
@@ -370,5 +402,6 @@
 
 <!-- utterances Comments -->
 
+<script src="/js/read.js" defer></script>
 </body>
 </html>
