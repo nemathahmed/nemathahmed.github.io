@@ -398,35 +398,13 @@ main,
   color: var(--white);
 }
 
-.toggle-icon {
-  width: 23px;
-  height: 23px;
+.card-flip-toggle .fa-solid {
+  font-size: 18px;
+  line-height: 1;
 }
 
-.toggle-icon-glove {
-  width: 24px;
-  height: 24px;
-}
-
-.toggle-icon .icon-fill {
-  fill: rgba(23, 22, 21, .08);
-  stroke: none;
-}
-
-.toggle-icon .icon-stroke {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.65;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.toggle-icon .icon-stroke-soft {
-  opacity: .55;
-}
-
-.card-flip-toggle:hover .icon-fill {
-  fill: rgba(255, 253, 248, .16);
+.card-flip-toggle .fa-guitar {
+  font-size: 17px;
 }
 
 .guitar-copy,
