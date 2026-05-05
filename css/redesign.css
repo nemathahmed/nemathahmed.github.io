@@ -1,5 +1,5 @@
 /* Clean editorial homepage with one playable interaction. */
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;0,700;1,600&display=swap");
 
 :root {
   --paper: #f7f3ea;
@@ -77,6 +77,15 @@ a {
   color: inherit;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
 .skip-link {
   position: fixed;
   top: 10px;
@@ -118,31 +127,17 @@ main,
 .nav-mark {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: -.01em;
   text-decoration: none;
 }
 
-.nav-monogram {
-  display: grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  border: 1px solid var(--ink);
-  border-radius: 50%;
-  background: var(--ink);
-  color: var(--white);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .04em;
-  line-height: 1;
-}
-
-.nav-name {
+.nav-script {
   color: var(--ink);
+  font-family: var(--serif);
+  font-size: 32px;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: -.12em;
+  line-height: .8;
 }
 
 .nav-links {
@@ -168,6 +163,7 @@ main,
 .hero,
 .about-section,
 .notes-section,
+.snapshot-section,
 .site-footer {
   width: min(1120px, calc(100% - 40px));
   margin: 0 auto;
@@ -200,7 +196,7 @@ main,
 .guitar-copy h2 {
   margin: 0;
   font-family: var(--display);
-  font-weight: 650;
+  font-weight: 600;
   line-height: .98;
   letter-spacing: -.04em;
 }
@@ -238,7 +234,7 @@ main,
   display: grid;
   grid-template-columns: 96px minmax(0, 1fr);
   gap: 18px;
-  align-items: baseline;
+  align-items: start;
   padding: 18px 0;
   border-bottom: 1px solid var(--line);
 }
@@ -250,12 +246,21 @@ main,
 }
 
 .hero-writing-list a {
+  display: inline-block;
   color: var(--ink);
-  font-size: clamp(22px, 3vw, 34px);
+  font-size: clamp(21px, 2.8vw, 31px);
   font-weight: 600;
   letter-spacing: -.02em;
   line-height: 1.08;
   text-decoration: none;
+}
+
+.hero-writing-list span {
+  display: block;
+  margin-top: 6px;
+  color: var(--ink-muted);
+  font-size: 15px;
+  line-height: 1.35;
 }
 
 .hero-writing-list a:hover {
@@ -268,7 +273,7 @@ main,
   align-items: center;
   min-height: 44px;
   color: var(--ink);
-  font-weight: 650;
+  font-weight: 600;
   text-decoration: none;
   border-bottom: 2px solid currentColor;
   transition: color .2s var(--ease), border-color .2s var(--ease);
@@ -350,7 +355,7 @@ main,
   border-radius: 999px;
   background: transparent;
   color: var(--ink-muted);
-  font: 650 12px/1 var(--sans);
+  font: 600 12px/1 var(--sans);
   cursor: pointer;
   transition: background .2s var(--ease), color .2s var(--ease);
 }
@@ -461,7 +466,7 @@ main,
   border-radius: 999px;
   background: var(--white);
   color: var(--ink);
-  font: 650 13px/1 var(--sans);
+  font: 600 13px/1 var(--sans);
   cursor: pointer;
   transition: background .2s var(--ease), color .2s var(--ease);
 }
@@ -472,9 +477,58 @@ main,
 }
 
 .about-section,
-.notes-section {
+.notes-section,
+.snapshot-section {
   padding: clamp(66px, 9vw, 116px) 0;
   border-top: 1px solid var(--line);
+}
+
+.snapshot-section {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(320px, 1.1fr);
+  gap: clamp(28px, 7vw, 86px);
+  align-items: start;
+}
+
+.snapshot-line {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(24px, 3vw, 38px);
+  font-weight: 500;
+  letter-spacing: -.035em;
+  line-height: 1.08;
+}
+
+.snapshot-line a {
+  color: var(--blue);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+
+.snapshot-list {
+  border-top: 2px solid var(--ink);
+}
+
+.snapshot-list > div {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.snapshot-list span {
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.snapshot-list p {
+  margin: 0;
+  color: var(--ink-muted);
+  line-height: 1.45;
 }
 
 .writing-head {
@@ -543,7 +597,7 @@ main,
 .start-card a {
   color: var(--ink);
   font-family: var(--display);
-  font-weight: 650;
+  font-weight: 600;
   font-size: clamp(30px, 4vw, 48px);
   line-height: .95;
   text-decoration: none;
@@ -623,7 +677,7 @@ main,
 
 .about-copy a {
   color: var(--blue);
-  font-weight: 650;
+  font-weight: 600;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
 }
@@ -655,7 +709,7 @@ main,
   margin: 54px 0 12px;
   font-family: var(--display);
   font-size: 42px;
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: -.035em;
   line-height: 1;
 }
@@ -673,13 +727,17 @@ main,
   border-top: 1px solid var(--ink);
 }
 
-.site-footer p {
+.site-footer p,
+.footer-mark {
   margin: 0;
-  font-family: var(--display);
-  font-size: clamp(30px, 5vw, 54px);
-  font-weight: 650;
-  letter-spacing: -.035em;
-  line-height: 1;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(34px, 5vw, 58px);
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: -.12em;
+  line-height: .85;
+  text-decoration: none;
 }
 
 .footer-links {
@@ -736,7 +794,8 @@ main,
   .writing-head,
   .start-shelf,
   .about-grid,
-  .frequency-grid {
+  .frequency-grid,
+  .snapshot-section {
     grid-template-columns: 1fr;
   }
 
@@ -758,6 +817,7 @@ main,
   .hero,
   .about-section,
   .notes-section,
+  .snapshot-section,
   .site-footer {
     width: min(100% - 28px, 1120px);
   }
@@ -779,6 +839,11 @@ main,
   .hero-writing-list li {
     grid-template-columns: 1fr;
     gap: 6px;
+  }
+
+  .snapshot-list > div {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .guitar-panel {

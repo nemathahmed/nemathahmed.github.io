@@ -139,7 +139,7 @@ h1.posttitle {
   color: var(--ink) !important;
   font-family: var(--display) !important;
   font-size: clamp(54px, 10vw, 104px) !important;
-  font-weight: 650 !important;
+  font-weight: 600 !important;
   line-height: .98 !important;
   letter-spacing: -.04em !important;
   text-transform: none !important;
@@ -180,7 +180,7 @@ article.post .meta .p-name {
 .content.e-content h4 {
   color: var(--ink);
   font-family: var(--sans);
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: 0;
   line-height: 1.08;
 }
@@ -318,7 +318,7 @@ hr {
   color: var(--red);
   font-family: var(--display);
   font-size: 46px;
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: -.035em;
   line-height: 1;
 }
@@ -387,7 +387,7 @@ hr {
   color: var(--ink);
   font-family: var(--display);
   font-size: clamp(52px, 9vw, 106px);
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: -.04em;
   line-height: .98;
 }
@@ -430,7 +430,7 @@ hr {
   color: var(--ink);
   font-family: var(--display);
   font-size: clamp(26px, 3.2vw, 40px);
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: -.035em;
   line-height: 1;
   text-decoration: none;
@@ -489,7 +489,7 @@ hr {
   color: var(--ink);
   font-family: var(--display);
   font-size: clamp(28px, 4vw, 48px);
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: -.035em;
   line-height: 1.03;
   text-decoration: none;

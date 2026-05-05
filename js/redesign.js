@@ -134,7 +134,7 @@
     });
 
     if (chordLabel) {
-      chordLabel.textContent = `Currently tuned to ${chord.label}.`;
+      chordLabel.textContent = `${chord.label} selected.`;
     }
 
     if (options.play) {
@@ -329,7 +329,7 @@
 
   startGridField();
 
-  document.querySelectorAll(".about-section, .notes-section, .frequency-grid article")
+  document.querySelectorAll(".snapshot-section, .snapshot-list > div")
     .forEach((element) => element.setAttribute("data-reveal", ""));
 
   if (!prefersReducedMotion && "IntersectionObserver" in window) {

@@ -26,13 +26,12 @@
 
 <nav class="site-nav" aria-label="Primary">
   <a class="nav-mark" href="/" aria-label="Nemath Ahmed home">
-    <span class="nav-monogram" aria-hidden="true">NA</span>
-    <span class="nav-name">Nemath Ahmed</span>
+    <span class="nav-script" aria-hidden="true">n.</span>
+    <span class="sr-only">Nemath Ahmed</span>
   </a>
   <div class="nav-links">
     <a href="/archives/">Writing</a>
-    <a href="#about">About</a>
-    <a href="#notes">Now</a>
+    <a href="https://dotflo.co" target="_blank" rel="noopener">dotflo</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -44,23 +43,38 @@
       <ol class="hero-writing-list" aria-label="Selected writing">
         <li>
           <time datetime="2024-05">2024-05</time>
-          <a href="/2024/05/22/graduating-georgia-tech/">Graduating Georgia Tech</a>
+          <div>
+            <a href="/2024/05/22/graduating-georgia-tech/">Graduating Georgia Tech</a>
+            <span>School, boxing, dotflo, and uncertainty.</span>
+          </div>
         </li>
         <li>
           <time datetime="2021-08">2021-08</time>
-          <a href="/2021/08/04/what-is-data-platform/">What's A Data Platform Anyway?</a>
+          <div>
+            <a href="/2021/08/04/what-is-data-platform/">What's A Data Platform Anyway?</a>
+            <span>How data moves, gets shaped, and becomes useful.</span>
+          </div>
         </li>
         <li>
           <time datetime="2021-07">2021-07</time>
-          <a href="/2021/07/26/art-of-research/">The Art of Reading A Research Paper</a>
+          <div>
+            <a href="/2021/07/26/art-of-research/">The Art of Reading A Research Paper</a>
+            <span>A practical way to slow down and find the idea.</span>
+          </div>
         </li>
         <li>
           <time datetime="2021-06">2021-06</time>
-          <a href="/2021/06/21/why-with-why/">Why You Should Start With Why</a>
+          <div>
+            <a href="/2021/06/21/why-with-why/">Why You Should Start With Why</a>
+            <span>Motivation, direction, and choosing what matters.</span>
+          </div>
         </li>
         <li>
           <time datetime="2021-06">2021-06</time>
-          <a href="/2021/06/15/how-do-fitness/">How do AI-Based fitness trackers work? Ft. 1D CNNs</a>
+          <div>
+            <a href="/2021/06/15/how-do-fitness/">How do AI-Based fitness trackers work? Ft. 1D CNNs</a>
+            <span>Movement data, models, and fitness tracking.</span>
+          </div>
         </li>
       </ol>
       <a class="text-link primary" href="/archives/">All writing</a>
@@ -68,8 +82,8 @@
 
     <section class="guitar-panel" aria-labelledby="guitar-title">
       <div class="guitar-copy">
-        <p class="eyebrow">Tap the strings</p>
-        <h2 id="guitar-title">A quiet chord for the page.</h2>
+        <p class="eyebrow">Guitar</p>
+        <h2 id="guitar-title">Play a chord.</h2>
         <div class="chord-tabs" aria-label="Choose guitar chord">
           <button type="button" class="chord-tab is-active" data-chord="am" aria-pressed="true">Am</button>
           <button type="button" class="chord-tab" data-chord="fsharp" aria-pressed="false">F#m7</button>
@@ -98,47 +112,34 @@
       </div>
       <div class="guitar-footer">
         <button class="sound-toggle" type="button" data-sound-toggle aria-pressed="false">Sound on</button>
-        <span data-chord-label>Currently tuned to Am.</span>
+        <span data-chord-label>Am selected.</span>
       </div>
     </section>
   </header>
 
-  <section class="about-section" id="about" aria-label="About">
-    <div class="about-copy about-copy-direct">
-      <p>
-        I am building <a href="https://dotflo.co" target="_blank" rel="noopener">dotflo.co</a> with my co-founder Spencer. Before that I studied at Georgia Tech and IIT Indore, and worked around AI and software teams.
-      </p>
-      <p>
-        I write about products, agents, systems, training, music, and the things I am trying to understand clearly.
-      </p>
-    </div>
-  </section>
-
-  <section class="notes-section" id="notes" aria-labelledby="notes-title">
-    <div class="section-kicker">Now</div>
-    <h2 id="notes-title">Current frequencies</h2>
-    <div class="frequency-grid">
-      <article>
-        <span>01</span>
-        <h3>Building</h3>
-        <p>dotflo, agents, product systems, and notes on what survives contact with real users.</p>
-      </article>
-      <article>
-        <span>02</span>
-        <h3>Training</h3>
-        <p>Muay Thai, boxing, conditioning, and the humility of getting corrected in real time.</p>
-      </article>
-      <article>
-        <span>03</span>
-        <h3>Music</h3>
-        <p>Guitar, open-mic courage, songs that make a room quieter, and chords worth stealing.</p>
-      </article>
+  <section class="snapshot-section" id="about" aria-label="About">
+    <p class="snapshot-line">
+      Building <a href="https://dotflo.co" target="_blank" rel="noopener">dotflo.co</a> with Spencer. I write when I am trying to understand something. Training and guitar are part of the routine.
+    </p>
+    <div class="snapshot-list">
+      <div>
+        <span>Work</span>
+        <p>Agents, customer discovery, product systems, and the parts of building that survive contact with users.</p>
+      </div>
+      <div>
+        <span>Training</span>
+        <p>Boxing and Muay Thai. Useful because feedback is immediate and excuses do not help.</p>
+      </div>
+      <div>
+        <span>Music</span>
+        <p>Guitar when I need to reset.</p>
+      </div>
     </div>
   </section>
 </main>
 
 <footer class="site-footer" id="contact">
-  <p>Write, train, build, repeat.</p>
+  <a class="footer-mark" href="/" aria-label="Home">n.</a>
   <div class="footer-links">
     <a href="https://twitter.com/nemathahmed" target="_blank" rel="noopener">Twitter</a>
     <a href="https://linkedin.com/in/nemathahmed" target="_blank" rel="noopener">LinkedIn</a>
