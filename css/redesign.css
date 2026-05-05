@@ -398,18 +398,35 @@ main,
   color: var(--white);
 }
 
-.card-flip-toggle svg {
-  width: 22px;
-  height: 22px;
+.toggle-icon {
+  width: 23px;
+  height: 23px;
+}
+
+.toggle-icon-glove {
+  width: 24px;
+  height: 24px;
+}
+
+.toggle-icon .icon-fill {
+  fill: rgba(23, 22, 21, .08);
+  stroke: none;
+}
+
+.toggle-icon .icon-stroke {
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.8;
+  stroke-width: 1.65;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-.card-flip-toggle svg path:first-child {
-  fill: rgba(255, 253, 248, .25);
+.toggle-icon .icon-stroke-soft {
+  opacity: .55;
+}
+
+.card-flip-toggle:hover .icon-fill {
+  fill: rgba(255, 253, 248, .16);
 }
 
 .guitar-copy,
