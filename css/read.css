@@ -474,11 +474,6 @@ hr {
   border-bottom: 1px solid var(--line);
 }
 
-.post-year + .post-item {
-  padding-top: 34px;
-  padding-bottom: 34px;
-}
-
 .post-item .meta {
   color: var(--ink-muted);
   font-family: var(--mono);
@@ -488,15 +483,11 @@ hr {
 .post-item a {
   color: var(--ink);
   font-family: var(--display);
-  font-size: clamp(28px, 4vw, 48px);
+  font-size: clamp(24px, 3vw, 34px);
   font-weight: 600;
-  letter-spacing: -.035em;
-  line-height: 1.03;
+  letter-spacing: -.02em;
+  line-height: 1.12;
   text-decoration: none;
-}
-
-.post-year + .post-item a {
-  font-size: clamp(38px, 6vw, 72px);
 }
 
 .post-item a:hover {
@@ -533,9 +524,8 @@ hr {
     grid-template-columns: 1fr;
   }
 
-  .post-item a,
-  .post-year + .post-item a {
-    font-size: clamp(30px, 10vw, 48px);
+  .post-item a {
+    font-size: clamp(24px, 8vw, 34px);
   }
 }
 
