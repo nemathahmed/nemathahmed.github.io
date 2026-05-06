@@ -437,10 +437,12 @@ hr {
   font-weight: 600;
   letter-spacing: -.02em;
   line-height: 1.12;
+  background-image: none;
   text-decoration: none;
 }
 
 .post-item a:hover {
+  background-image: none;
   color: var(--red);
 }
 
