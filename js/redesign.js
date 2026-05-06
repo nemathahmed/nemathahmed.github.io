@@ -15,9 +15,15 @@
   const timerRound = document.querySelector("[data-timer-round]");
   const timerProgress = document.querySelector("[data-timer-progress]");
   const timerSummary = document.querySelector("[data-timer-summary]");
+  const timerCue = document.querySelector("[data-timer-cue]");
   const timerStart = document.querySelector("[data-timer-start]");
   const timerReset = document.querySelector("[data-timer-reset]");
   const timerPresetButtons = Array.from(document.querySelectorAll("[data-timer-preset]"));
+  const roundReflection = document.querySelector("[data-round-reflection]");
+  const roundForm = document.querySelector("[data-round-form]");
+  const roundInput = document.querySelector("[data-round-input]");
+  const roundLog = document.querySelector("[data-round-log]");
+  const roundLogList = document.querySelector("[data-round-log-list]");
 
   const CHORDS = {
     am: {
@@ -220,6 +226,23 @@
     focus: { label: "Focus", rounds: 1, work: 1500, rest: 0 },
   };
 
+  const TIMER_CUES = {
+    boxing: {
+      work: ["Breathe through the round.", "Footwork first.", "Do not rush the reset.", "Finish clean."],
+      rest: ["Recover without drifting.", "Drop your shoulders.", "Find the next adjustment."],
+    },
+    muay: {
+      work: ["Balance before power.", "Win the reset.", "Keep your eyes up.", "One clean entry."],
+      rest: ["Breathe low.", "Notice what is open.", "Reset your stance."],
+    },
+    focus: {
+      work: ["One task. No tabs.", "Ship the small version.", "Write what changed.", "Stay with the discomfort."],
+      rest: ["Step away for a minute."],
+    },
+  };
+
+  const ROUND_LOG_KEY = "nemath-round-log-v1";
+
   let activeTimerPreset = "boxing";
   let timerMode = "work";
   let activeRound = 1;
@@ -227,6 +250,7 @@
   let timerRunning = false;
   let timerInterval = null;
   let lastTimerTick = 0;
+  let pendingRound = null;
 
   const formatSeconds = (seconds) => {
     const safeSeconds = Math.max(0, Math.floor(seconds));
@@ -236,6 +260,67 @@
   };
 
   const getTimerPreset = () => TIMER_PRESETS[activeTimerPreset] || TIMER_PRESETS.boxing;
+
+  const readRoundLog = () => {
+    try {
+      const parsed = JSON.parse(window.localStorage.getItem(ROUND_LOG_KEY) || "[]");
+      return Array.isArray(parsed) ? parsed.slice(0, 3) : [];
+    } catch {
+      return [];
+    }
+  };
+
+  const writeRoundLog = (entries) => {
+    try {
+      window.localStorage.setItem(ROUND_LOG_KEY, JSON.stringify(entries.slice(0, 3)));
+    } catch {
+      // Local storage can be unavailable in private contexts.
+    }
+  };
+
+  const renderRoundLog = () => {
+    if (!roundLog || !roundLogList) return;
+    const entries = readRoundLog();
+    roundLog.hidden = entries.length === 0;
+    roundLogList.replaceChildren();
+    entries.forEach((entry) => {
+      const item = document.createElement("li");
+      const time = document.createElement("time");
+      const text = document.createElement("span");
+      const date = new Date(entry.createdAt);
+      time.textContent = Number.isNaN(date.getTime())
+        ? "--:--"
+        : date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+      text.textContent = entry.text;
+      item.append(time, text);
+      roundLogList.append(item);
+    });
+  };
+
+  const getTimerCue = () => {
+    const preset = getTimerPreset();
+    if (timerMode === "done") return "Write one line before you leave.";
+    const cueSet = TIMER_CUES[activeTimerPreset] || TIMER_CUES.boxing;
+    const phaseCues = timerMode === "rest" ? cueSet.rest : cueSet.work;
+    const phaseTotal = timerMode === "rest" ? preset.rest : preset.work;
+    const elapsed = Math.max(0, phaseTotal - remainingSeconds);
+    const cueIndex = Math.floor(elapsed / 45) % phaseCues.length;
+    return phaseCues[cueIndex];
+  };
+
+  const showRoundReflection = (roundNumber, presetLabel) => {
+    if (!roundReflection) return;
+    pendingRound = { round: roundNumber, preset: presetLabel };
+    roundReflection.hidden = false;
+    if (roundInput) {
+      roundInput.value = "";
+    }
+  };
+
+  const hideRoundReflection = () => {
+    pendingRound = null;
+    if (roundReflection) roundReflection.hidden = true;
+  };
 
   const stopRoundTimer = () => {
     timerRunning = false;
@@ -270,6 +355,7 @@
         ? `${preset.rounds} rounds · ${formatSeconds(preset.work)} work · ${formatSeconds(preset.rest)} rest`
         : `${preset.rounds} round · ${formatSeconds(preset.work)} work`;
     }
+    if (timerCue) timerCue.textContent = getTimerCue();
     timerPresetButtons.forEach((button) => {
       button.classList.toggle("is-active", button.dataset.timerPreset === activeTimerPreset);
     });
@@ -281,6 +367,7 @@
     timerMode = "work";
     activeRound = 1;
     remainingSeconds = preset.work;
+    hideRoundReflection();
     renderRoundTimer();
   };
 
@@ -289,6 +376,7 @@
     timerMode = "done";
     remainingSeconds = 0;
     playTimerBell();
+    showRoundReflection(activeRound, getTimerPreset().label);
     renderRoundTimer();
   };
 
@@ -301,6 +389,7 @@
         return;
       }
       playTimerBell();
+      showRoundReflection(activeRound, preset.label);
       if (preset.rest > 0) {
         timerMode = "rest";
         remainingSeconds = preset.rest;
@@ -356,6 +445,25 @@
     });
   });
 
+  if (roundForm) {
+    roundForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const text = roundInput?.value.trim();
+      if (!text) return;
+      const entries = readRoundLog();
+      entries.unshift({
+        text,
+        round: pendingRound?.round || activeRound,
+        preset: pendingRound?.preset || getTimerPreset().label,
+        createdAt: Date.now(),
+      });
+      writeRoundLog(entries);
+      hideRoundReflection();
+      renderRoundLog();
+    });
+  }
+
+  renderRoundLog();
   renderRoundTimer();
 
   const startGridField = () => {

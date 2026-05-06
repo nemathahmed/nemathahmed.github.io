@@ -275,8 +275,7 @@ main,
   color: var(--ink);
   font-weight: 600;
   text-decoration: none;
-  border-bottom: 2px solid currentColor;
-  transition: color .2s var(--ease), border-color .2s var(--ease);
+  transition: color .2s var(--ease);
 }
 
 .text-link::after,
@@ -299,7 +298,7 @@ main,
 .discipline-card {
   position: relative;
   align-self: stretch;
-  min-height: 540px;
+  min-height: 660px;
   perspective: 1400px;
 }
 
@@ -323,17 +322,36 @@ main,
   overflow: hidden;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  pointer-events: none;
+}
+
+.card-face-front {
+  z-index: 2;
 }
 
 .card-face-back {
+  z-index: 1;
   transform: rotateY(180deg);
+}
+
+.discipline-card:not(.is-flipped) .card-face-front,
+.discipline-card.is-flipped .card-face-back {
+  pointer-events: auto;
+}
+
+.discipline-card.is-flipped .card-face-front {
+  z-index: 1;
+}
+
+.discipline-card.is-flipped .card-face-back {
+  z-index: 2;
 }
 
 .guitar-panel,
 .boxing-panel {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  gap: 28px;
+  gap: 22px;
   padding: clamp(22px, 4vw, 34px);
   border: 1px solid var(--ink);
   border-radius: 8px;
@@ -611,6 +629,20 @@ main,
   transition: width .25s linear, background .2s var(--ease);
 }
 
+.timer-cue {
+  position: relative;
+  z-index: 1;
+  margin: -4px 0 0;
+  padding: 12px 14px;
+  border-left: 2px solid var(--accent);
+  background: rgba(255, 253, 248, .62);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.25;
+}
+
 .timer-presets {
   position: relative;
   z-index: 1;
@@ -665,6 +697,85 @@ main,
   font-family: var(--mono);
   font-size: 12px;
   text-transform: uppercase;
+}
+
+.round-reflection,
+.round-log {
+  position: relative;
+  z-index: 1;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.round-reflection[hidden],
+.round-log[hidden] {
+  display: none;
+}
+
+.round-reflection p,
+.round-log p {
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.round-reflection form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
+.round-reflection input {
+  min-width: 0;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 253, 248, .86);
+  color: var(--ink);
+  font: 500 14px/1 var(--sans);
+}
+
+.round-reflection input:focus {
+  border-color: var(--ink);
+  outline: 0;
+}
+
+.round-reflection button {
+  height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--white);
+  font: 600 12px/1 var(--sans);
+  cursor: pointer;
+}
+
+.round-log ol {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+.round-log li {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 10px;
+  color: var(--ink-muted);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.round-log time {
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
 }
 
 .about-section,
@@ -978,7 +1089,7 @@ main,
   }
 
   .discipline-card {
-    min-height: 540px;
+    min-height: 660px;
   }
 
   .guitar-panel,
@@ -1042,7 +1153,7 @@ main,
   }
 
   .discipline-card {
-    min-height: 560px;
+    min-height: 720px;
   }
 
   .guitar-panel,
@@ -1058,6 +1169,11 @@ main,
   .timer-presets {
     grid-template-columns: 1fr;
     border-radius: 14px;
+  }
+
+  .round-reflection form,
+  .round-log li {
+    grid-template-columns: 1fr;
   }
 
   .chord-tabs {

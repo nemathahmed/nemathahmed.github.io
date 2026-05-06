@@ -4,16 +4,17 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-<title>Nemath Ahmed - Writing, Music, Combat, Building</title>
-<meta name="description" content="Nemath Ahmed writes about building, technology, training, music, and the notes that happen between them.">
+<title>Nemath Ahmed - Reflections and Notes</title>
+<meta name="description" content="Nemath Ahmed writes reflections, notes from learning, and evolving views on technology, training, music, and life.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nemath Ahmed">
-<meta property="og:description" content="Writing, music, combat sports, and building dotflo.">
+<meta property="og:description" content="Reflections, notes from learning, and evolving views.">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Nemath Ahmed">
 <meta name="twitter:card" content="summary">
 
 <link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
 <link rel="icon" type="image/png" href="/images/logo.png" sizes="192x192">
 <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 
@@ -32,7 +33,7 @@
   </a>
   <div class="nav-links">
     <a href="/archives/">Writing</a>
-    <a href="https://dotflo.co" target="_blank" rel="noopener">dotflo</a>
+    <a href="#about">Notes</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -46,7 +47,7 @@
           <time datetime="2024-05">2024-05</time>
           <div>
             <a href="/2024/05/22/graduating-georgia-tech/">Graduating Georgia Tech</a>
-            <span>School, boxing, dotflo, and uncertainty.</span>
+            <span>School, boxing, moving, and uncertainty.</span>
           </div>
         </li>
         <li>
@@ -141,6 +142,8 @@
             <span data-timer-progress></span>
           </div>
 
+          <p class="timer-cue" data-timer-cue>One clean round.</p>
+
           <div class="timer-presets" aria-label="Timer presets">
             <button type="button" class="is-active" data-timer-preset="boxing">Boxing</button>
             <button type="button" data-timer-preset="muay">Muay Thai</button>
@@ -153,6 +156,19 @@
           </div>
 
           <p class="timer-summary" data-timer-summary>3 rounds · 3:00 work · 1:00 rest</p>
+
+          <div class="round-reflection" data-round-reflection hidden>
+            <p>Round done. What did you notice?</p>
+            <form data-round-form>
+              <input type="text" data-round-input maxlength="120" autocomplete="off" placeholder="One line. Keep it honest.">
+              <button type="submit">Save</button>
+            </form>
+          </div>
+
+          <div class="round-log" data-round-log hidden>
+            <p>Recent rounds</p>
+            <ol data-round-log-list></ol>
+          </div>
         </div>
       </div>
     </section>
@@ -160,20 +176,20 @@
 
   <section class="snapshot-section" id="about" aria-label="About">
     <p class="snapshot-line">
-      Building <a href="https://dotflo.co" target="_blank" rel="noopener">dotflo.co</a> with Spencer. I write when I am trying to understand something. Training and guitar are part of the routine.
+      Reflections, notes from learning, and evolving views. I write to understand what changed, what held up, and what I would do differently.
     </p>
     <div class="snapshot-list">
       <div>
-        <span>Work</span>
-        <p>Agents, customer discovery, product systems, and the parts of building that survive contact with users.</p>
+        <span>Reflection</span>
+        <p>Personal notes from transitions, training, decisions, and the parts that took time to make sense.</p>
       </div>
       <div>
-        <span>Training</span>
-        <p>Boxing and Muay Thai. Useful because feedback is immediate and excuses do not help.</p>
+        <span>Learning</span>
+        <p>Technical and practical notes written while trying to make an idea clear enough to use.</p>
       </div>
       <div>
-        <span>Music</span>
-        <p>Guitar when I need to reset.</p>
+        <span>Views</span>
+        <p>Older posts stay up because changing your mind is part of the record.</p>
       </div>
     </div>
   </section>
@@ -185,7 +201,6 @@
     <a href="https://twitter.com/nemathahmed" target="_blank" rel="noopener">Twitter</a>
     <a href="https://linkedin.com/in/nemathahmed" target="_blank" rel="noopener">LinkedIn</a>
     <a href="https://github.com/nemathahmed" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://dotflo.co" target="_blank" rel="noopener">dotflo</a>
   </div>
 </footer>
 
