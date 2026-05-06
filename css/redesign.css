@@ -297,8 +297,10 @@ main,
 
 .discipline-card {
   position: relative;
-  align-self: stretch;
-  min-height: 660px;
+  align-self: center;
+  width: 100%;
+  height: clamp(560px, 64svh, 660px);
+  min-height: 560px;
   perspective: 1400px;
 }
 
@@ -433,9 +435,9 @@ main,
 
 .guitar-copy h2,
 .timer-copy h2 {
-  max-width: 320px;
+  max-width: 300px;
   margin-top: 12px;
-  font-size: clamp(34px, 5vw, 58px);
+  font-size: clamp(32px, 4vw, 50px);
 }
 
 .guitar-copy h2 {
@@ -1089,6 +1091,8 @@ main,
   }
 
   .discipline-card {
+    align-self: stretch;
+    height: auto;
     min-height: 660px;
   }
 
@@ -1153,6 +1157,7 @@ main,
   }
 
   .discipline-card {
+    height: auto;
     min-height: 720px;
   }
 
