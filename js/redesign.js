@@ -7,6 +7,11 @@
   const soundToggle = document.querySelector("[data-sound-toggle]");
   const chordTabs = Array.from(document.querySelectorAll("[data-chord]"));
   const chordLabel = document.querySelector("[data-chord-label]");
+  const spotifyRoot = document.querySelector("[data-spotify-listening]");
+  const spotifyKicker = document.querySelector("[data-spotify-kicker]");
+  const spotifyTitle = document.querySelector("[data-spotify-title]");
+  const spotifyArtist = document.querySelector("[data-spotify-artist]");
+  const spotifyArt = document.querySelector("[data-spotify-art]");
   const disciplineCard = document.querySelector("[data-discipline-card]");
   const cardToggles = Array.from(document.querySelectorAll("[data-card-toggle]"));
   const timerRoot = document.querySelector("[data-round-timer]");
@@ -242,6 +247,7 @@
   };
 
   const ROUND_LOG_KEY = "nemath-round-log-v1";
+  const SPOTIFY_POLL_MS = 45000;
 
   let activeTimerPreset = "boxing";
   let timerMode = "work";
@@ -465,6 +471,65 @@
 
   renderRoundLog();
   renderRoundTimer();
+
+  const setSpotifyIdle = (title = "the room is quiet", artist = "nothing live from Spotify right now") => {
+    if (!spotifyRoot) return;
+    spotifyRoot.classList.remove("is-live", "has-art");
+    spotifyRoot.href = "https://open.spotify.com/user/nemathahmed";
+    spotifyRoot.setAttribute("aria-label", "Open Spotify profile");
+    spotifyRoot.style.removeProperty("--spotify-art");
+    if (spotifyArt) spotifyArt.removeAttribute("style");
+    if (spotifyKicker) spotifyKicker.textContent = "Listening room";
+    if (spotifyTitle) spotifyTitle.textContent = title;
+    if (spotifyArtist) spotifyArtist.textContent = artist;
+  };
+
+  const setSpotifyTrack = (track) => {
+    if (!spotifyRoot || !track?.title) return;
+    const isPlaying = Boolean(track.isPlaying);
+    const artist = track.artist || "Unknown artist";
+    spotifyRoot.classList.toggle("is-live", isPlaying);
+    spotifyRoot.href = track.spotifyUrl || "https://open.spotify.com/user/nemathahmed";
+    spotifyRoot.setAttribute("aria-label", `${isPlaying ? "Now playing" : "Recently playing"}: ${track.title} by ${artist}`);
+    if (spotifyKicker) spotifyKicker.textContent = isPlaying ? "Now playing" : "Last in rotation";
+    if (spotifyTitle) spotifyTitle.textContent = track.title;
+    if (spotifyArtist) spotifyArtist.textContent = artist;
+
+    if (track.albumImage) {
+      const imageUrl = String(track.albumImage).replaceAll("\"", "%22");
+      spotifyRoot.classList.add("has-art");
+      spotifyRoot.style.setProperty("--spotify-art", `url("${imageUrl}")`);
+      if (spotifyArt) spotifyArt.style.backgroundImage = `radial-gradient(circle at center, rgba(247, 243, 234, .95) 0 4px, rgba(23, 22, 21, .86) 5px 7px, transparent 8px), url("${imageUrl}")`;
+    } else {
+      spotifyRoot.classList.remove("has-art");
+      spotifyRoot.style.removeProperty("--spotify-art");
+      if (spotifyArt) spotifyArt.removeAttribute("style");
+    }
+  };
+
+  const refreshSpotify = async () => {
+    if (!spotifyRoot) return;
+    try {
+      const response = await fetch("/api/spotify", { cache: "no-store" });
+      if (!response.ok) {
+        setSpotifyIdle();
+        return;
+      }
+      const payload = await response.json();
+      if (payload?.title) {
+        setSpotifyTrack(payload);
+        return;
+      }
+      setSpotifyIdle();
+    } catch {
+      setSpotifyIdle();
+    }
+  };
+
+  if (spotifyRoot) {
+    refreshSpotify();
+    window.setInterval(refreshSpotify, SPOTIFY_POLL_MS);
+  }
 
   const startGridField = () => {
     const canvas = document.querySelector("[data-grid-field]");
