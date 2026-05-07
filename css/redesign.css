@@ -481,8 +481,6 @@ main,
 .current-notes {
   position: relative;
   z-index: 1;
-  display: grid;
-  gap: 10px;
 }
 
 .weekly-song {
@@ -528,8 +526,7 @@ main,
   gap: 1px;
 }
 
-.weekly-song-copy span,
-.reading-now span {
+.weekly-song-copy span {
   color: var(--ink-muted);
   font-family: var(--mono);
   font-size: 11px;
@@ -537,8 +534,7 @@ main,
   text-transform: uppercase;
 }
 
-.weekly-song-copy strong,
-.reading-now strong {
+.weekly-song-copy strong {
   overflow: hidden;
   color: var(--ink);
   font-size: 15px;
@@ -577,15 +573,6 @@ main,
 .weekly-song-bars i:nth-child(3) {
   height: 10px;
   animation-delay: -1.35s;
-}
-
-.reading-now {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  min-width: 0;
-  padding-left: 3px;
-  color: var(--ink-muted);
 }
 
 @keyframes listening-bar {
