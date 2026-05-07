@@ -561,22 +561,22 @@ main,
   display: block;
   border-radius: 999px;
   background: var(--blue);
-  animation: listening-bar .92s var(--ease) infinite;
-  opacity: .85;
+  animation: listening-bar 2.8s var(--ease) infinite;
+  opacity: .48;
 }
 
 .weekly-song-bars i:first-child {
-  height: 9px;
+  height: 8px;
 }
 
 .weekly-song-bars i:nth-child(2) {
-  height: 18px;
-  animation-delay: -.24s;
+  height: 14px;
+  animation-delay: -.7s;
 }
 
 .weekly-song-bars i:nth-child(3) {
-  height: 12px;
-  animation-delay: -.46s;
+  height: 10px;
+  animation-delay: -1.35s;
 }
 
 .reading-now {
@@ -589,9 +589,9 @@ main,
 }
 
 @keyframes listening-bar {
-  0%, 100% { height: 7px; }
-  40% { height: 21px; }
-  70% { height: 12px; }
+  0%, 100% { transform: scaleY(.72); }
+  45% { transform: scaleY(1); }
+  72% { transform: scaleY(.84); }
 }
 
 .guitar {
