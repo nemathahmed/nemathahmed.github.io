@@ -59,6 +59,17 @@ const getImageUrl = (item, type) => {
 };
 
 module.exports = async (request, response) => {
+  response.setHeader("Access-Control-Allow-Origin", "*");
+  response.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
+  response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  response.setHeader("Vary", "Origin");
+
+  if (request.method === "OPTIONS") {
+    response.statusCode = 204;
+    response.end();
+    return;
+  }
+
   if (request.method !== "GET") {
     response.setHeader("Allow", "GET");
     json(response, 405, { error: "Method not allowed" });

@@ -248,6 +248,9 @@
 
   const ROUND_LOG_KEY = "nemath-round-log-v1";
   const SPOTIFY_POLL_MS = 45000;
+  const SPOTIFY_ENDPOINT = window.location.hostname.endsWith("github.io")
+    ? "https://nemathahmedgithubio.vercel.app/api/spotify"
+    : "/api/spotify";
 
   let activeTimerPreset = "boxing";
   let timerMode = "work";
@@ -510,7 +513,7 @@
   const refreshSpotify = async () => {
     if (!spotifyRoot) return;
     try {
-      const response = await fetch("/api/spotify", { cache: "no-store" });
+      const response = await fetch(SPOTIFY_ENDPOINT, { cache: "no-store" });
       if (!response.ok) {
         setSpotifyIdle();
         return;
