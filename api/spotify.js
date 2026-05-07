@@ -96,6 +96,15 @@ module.exports = async (request, response) => {
       return;
     }
 
+    if (spotifyResponse.status === 403) {
+      json(response, 200, {
+        isConfigured: true,
+        isPlaying: false,
+        reason: "premium_required",
+      });
+      return;
+    }
+
     if (!spotifyResponse.ok) {
       const body = await spotifyResponse.text();
       throw new Error(`Spotify currently playing failed (${spotifyResponse.status}): ${body}`);
