@@ -299,8 +299,8 @@ main,
   position: relative;
   align-self: center;
   width: 100%;
-  height: clamp(640px, 72svh, 760px);
-  min-height: 640px;
+  height: clamp(720px, 76svh, 780px);
+  min-height: 720px;
   perspective: 1400px;
 }
 
@@ -361,8 +361,8 @@ main,
 }
 
 .guitar-panel {
-  grid-template-rows: auto auto minmax(210px, 1fr) auto;
-  gap: clamp(24px, 3.4vw, 34px);
+  grid-template-rows: auto auto minmax(280px, 1fr) auto;
+  gap: clamp(26px, 3vw, 32px);
   background:
     linear-gradient(135deg, rgba(255, 253, 248, .92), rgba(220, 232, 230, .92)),
     var(--mist);
@@ -437,9 +437,9 @@ main,
 
 .guitar-copy h2,
 .timer-copy h2 {
-  max-width: 300px;
+  max-width: 260px;
   margin-top: 12px;
-  font-size: clamp(32px, 4vw, 50px);
+  font-size: clamp(30px, 3vw, 40px);
 }
 
 .guitar-copy h2 {
@@ -454,7 +454,7 @@ main,
   display: inline-flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 18px;
+  margin-top: 14px;
   padding: 5px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -462,7 +462,7 @@ main,
 }
 
 .chord-tab {
-  min-height: 34px;
+  min-height: 32px;
   padding: 0 12px;
   border: 0;
   border-radius: 999px;
@@ -486,10 +486,10 @@ main,
 .weekly-song {
   position: relative;
   display: grid;
-  grid-template-columns: 46px minmax(0, 1fr) auto;
+  grid-template-columns: 40px minmax(0, 1fr) auto;
   gap: 12px;
   align-items: center;
-  padding: 12px 14px;
+  padding: 9px 13px;
   border: 1px solid rgba(23, 22, 21, .16);
   border-radius: 999px;
   background: rgba(255, 253, 248, .68);
@@ -505,8 +505,8 @@ main,
 }
 
 .weekly-song-art {
-  width: 46px;
-  height: 46px;
+  width: 40px;
+  height: 40px;
   border: 1px solid rgba(23, 22, 21, .2);
   overflow: hidden;
   border-radius: 12px;
@@ -537,7 +537,7 @@ main,
 .weekly-song-copy strong {
   overflow: hidden;
   color: var(--ink);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1.1;
   text-overflow: ellipsis;
@@ -586,18 +586,18 @@ main,
   z-index: 1;
   display: grid;
   grid-template-rows: repeat(6, 1fr);
-  gap: 16px;
-  align-self: center;
-  padding: 30px 0 54px;
+  gap: clamp(14px, 1.8vw, 18px);
+  align-self: stretch;
+  padding: 34px 0 56px;
 }
 
 .guitar::before,
 .guitar::after {
   content: "";
   position: absolute;
-  top: 8px;
-  bottom: 8px;
-  width: 18px;
+  top: 22px;
+  bottom: 18px;
+  width: 16px;
   border-radius: 999px;
   background: var(--ink);
 }
@@ -612,7 +612,7 @@ main,
 
 .string {
   position: relative;
-  height: 36px;
+  height: clamp(28px, 2.4vw, 32px);
   padding: 0 28px;
   border: 0;
   background: transparent;
@@ -671,7 +671,7 @@ main,
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  padding-top: 4px;
+  padding-top: 8px;
   color: var(--ink-muted);
   font-size: 13px;
 }
