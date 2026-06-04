@@ -22,7 +22,7 @@
 <meta name="theme-color" content="#f7f3ea">
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-<link rel="stylesheet" href="/css/redesign.css?v=20260508-card">
+<link rel="stylesheet" href="/css/redesign.css?v=20260604-word">
 </head>
 
 <body class="home-page">
@@ -195,6 +195,22 @@
     </section>
   </header>
 
+  <section class="word-section" aria-labelledby="daily-word-title" data-daily-word>
+    <div class="word-intro">
+      <p class="eyebrow">New word</p>
+      <h2 id="daily-word-title">A word to take with you.</h2>
+    </div>
+    <article class="daily-word-panel" aria-live="polite">
+      <div class="daily-word-meta">
+        <span data-daily-word-date>Today</span>
+        <span data-daily-word-type>noun</span>
+      </div>
+      <p class="daily-word-text" data-daily-word-text>liminal</p>
+      <p class="daily-word-definition" data-daily-word-definition>Relating to a threshold or transition between two states.</p>
+      <p class="daily-word-example" data-daily-word-example>Use it: The quiet hour before sunrise felt liminal.</p>
+    </article>
+  </section>
+
   <section class="snapshot-section" id="about" aria-label="About">
     <p class="snapshot-line">
       Reflections, notes from learning, and evolving views. I write to understand what changed, what held up, and what I would do differently.
@@ -225,6 +241,6 @@
   </div>
 </footer>
 
-<script src="/js/redesign.js" defer></script>
+<script src="/js/redesign.js?v=20260604-word" defer></script>
 </body>
 </html>

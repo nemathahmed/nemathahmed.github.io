@@ -466,6 +466,225 @@
   renderRoundLog();
   renderRoundTimer();
 
+  const dailyWordRoot = document.querySelector("[data-daily-word]");
+  const dailyWordText = document.querySelector("[data-daily-word-text]");
+  const dailyWordType = document.querySelector("[data-daily-word-type]");
+  const dailyWordDate = document.querySelector("[data-daily-word-date]");
+  const dailyWordDefinition = document.querySelector("[data-daily-word-definition]");
+  const dailyWordExample = document.querySelector("[data-daily-word-example]");
+
+  const DAILY_WORDS = [
+    {
+      word: "liminal",
+      type: "adjective",
+      definition: "Relating to a threshold or transition between two states.",
+      example: "Use it: The quiet hour before sunrise felt liminal.",
+    },
+    {
+      word: "lacuna",
+      type: "noun",
+      definition: "A blank space, missing part, or gap in a record, thought, or story.",
+      example: "Use it: The old notebook had a lacuna where the best idea should have been.",
+    },
+    {
+      word: "numinous",
+      type: "adjective",
+      definition: "Having a mysterious, spiritual, or awe-filled quality.",
+      example: "Use it: The empty chapel had a numinous stillness.",
+    },
+    {
+      word: "sonder",
+      type: "noun",
+      definition: "The realization that every stranger has a life as vivid and complex as your own.",
+      example: "Use it: A crowded train can trigger a small moment of sonder.",
+    },
+    {
+      word: "petrichor",
+      type: "noun",
+      definition: "The earthy smell that rises when rain falls on dry ground.",
+      example: "Use it: Petrichor came through the window after the storm started.",
+    },
+    {
+      word: "apricity",
+      type: "noun",
+      definition: "The warmth of the sun in winter.",
+      example: "Use it: We stood outside longer than planned for the apricity.",
+    },
+    {
+      word: "verdant",
+      type: "adjective",
+      definition: "Green with growing plants, or fresh and full of life.",
+      example: "Use it: The trail turned verdant after a week of rain.",
+    },
+    {
+      word: "mellifluous",
+      type: "adjective",
+      definition: "Smooth, sweet, and pleasant to hear.",
+      example: "Use it: Her mellifluous voice made the room settle down.",
+    },
+    {
+      word: "sillage",
+      type: "noun",
+      definition: "The lingering trace of a scent, impression, or presence after something passes.",
+      example: "Use it: The coffee shop left a sillage of cinnamon on his coat.",
+    },
+    {
+      word: "palimpsest",
+      type: "noun",
+      definition: "Something reused or altered while still showing traces of its earlier form.",
+      example: "Use it: The city felt like a palimpsest of every decade that shaped it.",
+    },
+    {
+      word: "equanimity",
+      type: "noun",
+      definition: "Calmness and steadiness, especially under stress.",
+      example: "Use it: She answered the hard question with equanimity.",
+    },
+    {
+      word: "resonant",
+      type: "adjective",
+      definition: "Deep, clear, and continuing to have meaning or emotional force.",
+      example: "Use it: The final line was simple, but resonant.",
+    },
+    {
+      word: "anodyne",
+      type: "adjective",
+      definition: "Soothing, inoffensive, or unlikely to provoke disagreement.",
+      example: "Use it: The meeting ended with an anodyne summary.",
+    },
+    {
+      word: "ineffable",
+      type: "adjective",
+      definition: "Too great, strange, or subtle to be fully expressed in words.",
+      example: "Use it: The feeling after the last bell was ineffable.",
+    },
+    {
+      word: "ephemeral",
+      type: "adjective",
+      definition: "Lasting for only a short time.",
+      example: "Use it: The perfect light on the wall was ephemeral.",
+    },
+    {
+      word: "salient",
+      type: "adjective",
+      definition: "Most noticeable, important, or relevant.",
+      example: "Use it: The salient detail was buried in the second paragraph.",
+    },
+    {
+      word: "recondite",
+      type: "adjective",
+      definition: "Difficult to understand because it is obscure or specialized.",
+      example: "Use it: The paper made a recondite subject feel approachable.",
+    },
+    {
+      word: "lucent",
+      type: "adjective",
+      definition: "Glowing with light, or clear in expression.",
+      example: "Use it: The lake looked lucent at dusk.",
+    },
+    {
+      word: "tenable",
+      type: "adjective",
+      definition: "Able to be defended as reasonable, logical, or workable.",
+      example: "Use it: That explanation is cleaner, but not yet tenable.",
+    },
+    {
+      word: "incandescent",
+      type: "adjective",
+      definition: "Glowing with heat or emotion; brilliant and intense.",
+      example: "Use it: He gave an incandescent defense of the idea.",
+    },
+    {
+      word: "ravel",
+      type: "verb",
+      definition: "To untangle, or to become tangled, depending on the context.",
+      example: "Use it: It took an hour to ravel the argument into something clear.",
+    },
+    {
+      word: "halcyon",
+      type: "adjective",
+      definition: "Calm, peaceful, and often remembered as happy.",
+      example: "Use it: They talked about the halcyon weeks before the move.",
+    },
+    {
+      word: "inchoate",
+      type: "adjective",
+      definition: "Just beginning and not yet fully formed.",
+      example: "Use it: The plan was still inchoate, but the shape was there.",
+    },
+    {
+      word: "tacit",
+      type: "adjective",
+      definition: "Understood or implied without being directly stated.",
+      example: "Use it: There was a tacit agreement to keep going.",
+    },
+    {
+      word: "votive",
+      type: "adjective",
+      definition: "Offered or done as an expression of devotion, hope, or gratitude.",
+      example: "Use it: A row of votive candles flickered near the door.",
+    },
+    {
+      word: "littoral",
+      type: "adjective",
+      definition: "Relating to the shore of a sea, lake, or river.",
+      example: "Use it: The littoral path was quiet after sunset.",
+    },
+    {
+      word: "winsome",
+      type: "adjective",
+      definition: "Attractive or charming in a fresh, open way.",
+      example: "Use it: The sketch had a winsome looseness.",
+    },
+    {
+      word: "sedulous",
+      type: "adjective",
+      definition: "Showing steady, careful, and persistent effort.",
+      example: "Use it: His sedulous edits made the draft much sharper.",
+    },
+    {
+      word: "susurrus",
+      type: "noun",
+      definition: "A soft whispering, rustling, or murmuring sound.",
+      example: "Use it: The susurrus of rain made the room feel smaller.",
+    },
+    {
+      word: "penumbra",
+      type: "noun",
+      definition: "A partial shadow, or a surrounding area where something is less clear.",
+      example: "Use it: The argument lived in the penumbra between fact and memory.",
+    },
+    {
+      word: "ebullient",
+      type: "adjective",
+      definition: "Cheerful, energetic, and full of excitement.",
+      example: "Use it: The room turned ebullient after the announcement.",
+    },
+  ];
+
+  const renderDailyWord = () => {
+    if (!dailyWordRoot || DAILY_WORDS.length === 0) return;
+    const today = new Date();
+    const localDay = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+    const yearStart = Date.UTC(today.getFullYear(), 0, 0);
+    const dayOfYear = Math.floor((localDay - yearStart) / 86400000);
+    const index = (today.getFullYear() * 372 + dayOfYear) % DAILY_WORDS.length;
+    const entry = DAILY_WORDS[index];
+
+    if (dailyWordText) dailyWordText.textContent = entry.word;
+    if (dailyWordType) dailyWordType.textContent = entry.type;
+    if (dailyWordDefinition) dailyWordDefinition.textContent = entry.definition;
+    if (dailyWordExample) dailyWordExample.textContent = entry.example;
+    if (dailyWordDate) {
+      dailyWordDate.textContent = today.toLocaleDateString([], {
+        month: "short",
+        day: "numeric",
+      });
+    }
+  };
+
+  renderDailyWord();
+
   const startGridField = () => {
     const canvas = document.querySelector("[data-grid-field]");
     if (!canvas || prefersReducedMotion || !hasFinePointer) return;
@@ -606,7 +825,7 @@
 
   startGridField();
 
-  document.querySelectorAll(".snapshot-section, .snapshot-list > div")
+  document.querySelectorAll(".word-section, .daily-word-panel, .snapshot-section, .snapshot-list > div")
     .forEach((element) => element.setAttribute("data-reveal", ""));
 
   if (!prefersReducedMotion && "IntersectionObserver" in window) {
