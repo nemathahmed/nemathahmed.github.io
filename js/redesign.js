@@ -825,7 +825,7 @@
 
   startGridField();
 
-  document.querySelectorAll(".word-section, .daily-word-panel, .snapshot-section, .snapshot-list > div")
+  document.querySelectorAll(".word-section, .daily-word-panel")
     .forEach((element) => element.setAttribute("data-reveal", ""));
 
   if (!prefersReducedMotion && "IntersectionObserver" in window) {
