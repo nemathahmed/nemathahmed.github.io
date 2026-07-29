@@ -1,6 +1,5 @@
 (() => {
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const hasFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   const root = document.documentElement;
   const strings = Array.from(document.querySelectorAll("[data-guitar] .string"));
   const guitar = document.querySelector("[data-guitar]");
@@ -28,36 +27,33 @@
   const CHORDS = {
     am: {
       label: "Am",
-      accent: "#c84232",
-      soft: "rgba(200, 66, 50, .13)",
-      grid: "rgba(200, 66, 50, .16)",
+      accent: "#244a5a",
+      soft: "rgba(36, 74, 90, .1)",
       notes: [82.41, 110.00, 164.81, 220.00, 261.63, 329.63],
       labels: ["E2", "A2", "E3", "A3", "C4", "E4"],
     },
     fsharp: {
       label: "F#m7",
-      accent: "#305f72",
-      soft: "rgba(48, 95, 114, .15)",
-      grid: "rgba(48, 95, 114, .18)",
+      accent: "#405c66",
+      soft: "rgba(64, 92, 102, .11)",
       notes: [92.50, 138.59, 164.81, 220.00, 277.18, 369.99],
       labels: ["F#2", "C#3", "E3", "A3", "C#4", "F#4"],
     },
     cmaj: {
       label: "Cmaj7",
-      accent: "#667d45",
-      soft: "rgba(102, 125, 69, .16)",
-      grid: "rgba(102, 125, 69, .18)",
+      accent: "#536348",
+      soft: "rgba(83, 99, 72, .12)",
       notes: [82.41, 130.81, 164.81, 196.00, 246.94, 329.63],
       labels: ["E2", "C3", "E3", "G3", "B3", "E4"],
     },
   };
+  const CHORD_SEQUENCE = Object.keys(CHORDS);
 
   let audioContext = null;
   let soundEnabled = true;
   let isDragging = false;
   let lastPlayed = null;
   let activeChordKey = "am";
-  let currentGridColor = CHORDS.am.grid;
 
   const setToggleState = () => {
     if (!soundToggle) return;
@@ -130,18 +126,36 @@
     });
   };
 
+  const isTextEntryTarget = (target) => {
+    if (!(target instanceof Element)) return false;
+    return Boolean(target.closest("input, textarea, select, [contenteditable]"));
+  };
+
+  const isGuitarActive = () => Boolean(guitar) && !disciplineCard?.classList.contains("is-flipped");
+
+  const getStringForKey = (key) => {
+    const normalizedKey = key.toLowerCase();
+    return strings.find((button) => button.dataset.key?.toLowerCase() === normalizedKey);
+  };
+
+  const shouldLetSpaceActivateFocusedControl = (target) => {
+    if (!(target instanceof Element)) return false;
+    const control = target.closest("button, a");
+    return Boolean(control && !control.matches("[data-chord]") && !control.closest("[data-guitar]"));
+  };
+
   const applyChord = (key, options = { play: false }) => {
     const chord = CHORDS[key] || CHORDS.am;
     activeChordKey = key;
     root.style.setProperty("--accent", chord.accent);
     root.style.setProperty("--accent-soft", chord.soft);
-    root.style.setProperty("--accent-grid", chord.grid);
-    currentGridColor = chord.grid;
 
     strings.forEach((button, index) => {
+      const keyHint = button.dataset.key;
       button.dataset.note = String(chord.notes[index]);
       button.dataset.label = chord.labels[index];
-      button.setAttribute("aria-label", `Play ${chord.labels[index]} string`);
+      button.setAttribute("aria-label", `Play ${chord.labels[index]} string${keyHint ? ` with ${keyHint}` : ""}`);
+      if (keyHint) button.setAttribute("aria-keyshortcuts", keyHint);
     });
 
     chordTabs.forEach((tab) => {
@@ -152,11 +166,18 @@
 
     if (chordLabel) {
       chordLabel.textContent = `${chord.label} selected.`;
+      chordLabel.setAttribute("aria-label", `${chord.label} selected. Press space for next chord.`);
     }
 
     if (options.play) {
       playStrum("down");
     }
+  };
+
+  const cycleChord = () => {
+    const activeIndex = Math.max(0, CHORD_SEQUENCE.indexOf(activeChordKey));
+    const nextKey = CHORD_SEQUENCE[(activeIndex + 1) % CHORD_SEQUENCE.length];
+    applyChord(nextKey, { play: true });
   };
 
   strings.forEach((button) => {
@@ -167,10 +188,37 @@
     });
 
     button.addEventListener("keydown", (event) => {
-      if (event.key !== "Enter" && event.key !== " ") return;
+      if (event.key !== "Enter") return;
       event.preventDefault();
       playNote(button);
     });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (
+      event.defaultPrevented ||
+      event.repeat ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.altKey ||
+      isTextEntryTarget(event.target) ||
+      !isGuitarActive()
+    ) {
+      return;
+    }
+
+    const isSpace = event.code === "Space" || event.key === " " || event.key === "Spacebar";
+    if (isSpace) {
+      if (shouldLetSpaceActivateFocusedControl(event.target)) return;
+      event.preventDefault();
+      cycleChord();
+      return;
+    }
+
+    const stringButton = getStringForKey(event.key);
+    if (!stringButton) return;
+    event.preventDefault();
+    playNote(stringButton);
   });
 
   document.addEventListener("pointerup", () => {
@@ -684,146 +732,6 @@
   };
 
   renderDailyWord();
-
-  const startGridField = () => {
-    const canvas = document.querySelector("[data-grid-field]");
-    if (!canvas || prefersReducedMotion || !hasFinePointer) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    document.body.classList.add("has-grid-field");
-
-    const spacing = 42;
-    const segment = 12;
-    const radius = 190;
-    const strength = 18;
-    const pointer = {
-      x: window.innerWidth / 2,
-      y: window.innerHeight / 2,
-      tx: window.innerWidth / 2,
-      ty: window.innerHeight / 2,
-    };
-    let width = 0;
-    let height = 0;
-    let dpr = 1;
-    let intensity = 0;
-    let targetIntensity = 0;
-    let running = false;
-
-    const resize = () => {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = Math.ceil(width * dpr);
-      canvas.height = Math.ceil(height * dpr);
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      draw();
-    };
-
-    const distortPoint = (x, y, amount) => {
-      if (amount <= 0.001) return { x, y };
-      const dx = x - pointer.x;
-      const dy = y - pointer.y;
-      const distance = Math.hypot(dx, dy);
-      if (distance >= radius || distance < 0.001) return { x, y };
-      const falloff = 1 - distance / radius;
-      const wave = Math.sin(falloff * Math.PI);
-      const push = wave * wave * strength * amount;
-      const swirl = falloff * 7 * amount;
-      const ux = dx / distance;
-      const uy = dy / distance;
-      return {
-        x: x + ux * push - uy * swirl,
-        y: y + uy * push + ux * swirl,
-      };
-    };
-
-    const drawPath = (points, amount) => {
-      points.forEach((point, index) => {
-        const warped = distortPoint(point.x, point.y, amount);
-        if (index === 0) ctx.moveTo(warped.x, warped.y);
-        else ctx.lineTo(warped.x, warped.y);
-      });
-    };
-
-    const drawGrid = (strokeStyle, lineWidth, amount) => {
-      ctx.strokeStyle = strokeStyle;
-      ctx.lineWidth = lineWidth;
-
-      for (let x = -spacing; x <= width + spacing; x += spacing) {
-        ctx.beginPath();
-        const points = [];
-        for (let y = -segment; y <= height + segment; y += segment) {
-          points.push({ x, y });
-        }
-        drawPath(points, amount);
-        ctx.stroke();
-      }
-
-      for (let y = -spacing; y <= height + spacing; y += spacing) {
-        ctx.beginPath();
-        const points = [];
-        for (let x = -segment; x <= width + segment; x += segment) {
-          points.push({ x, y });
-        }
-        drawPath(points, amount);
-        ctx.stroke();
-      }
-    };
-
-    function draw() {
-      ctx.clearRect(0, 0, width, height);
-      drawGrid("rgba(48, 95, 114, 0.055)", 1, intensity);
-
-      if (intensity > 0.015) {
-        ctx.save();
-        ctx.globalAlpha = Math.min(0.9, intensity);
-        ctx.beginPath();
-        ctx.arc(pointer.x, pointer.y, radius * 1.05, 0, Math.PI * 2);
-        ctx.clip();
-        drawGrid(currentGridColor, 1.15, intensity);
-        ctx.restore();
-      }
-    }
-
-    const animate = () => {
-      running = true;
-      pointer.x += (pointer.tx - pointer.x) * 0.18;
-      pointer.y += (pointer.ty - pointer.y) * 0.18;
-      intensity += (targetIntensity - intensity) * 0.14;
-      draw();
-      if (Math.abs(targetIntensity - intensity) > 0.01 || intensity > 0.015) {
-        requestAnimationFrame(animate);
-      } else {
-        intensity = 0;
-        running = false;
-        draw();
-      }
-    };
-
-    const wake = () => {
-      if (!running) requestAnimationFrame(animate);
-    };
-
-    document.addEventListener("pointermove", (event) => {
-      pointer.tx = event.clientX;
-      pointer.ty = event.clientY;
-      targetIntensity = 1;
-      wake();
-    }, { passive: true });
-
-    document.addEventListener("pointerleave", () => {
-      targetIntensity = 0;
-      wake();
-    });
-
-    window.addEventListener("resize", resize);
-    resize();
-  };
-
-  startGridField();
 
   document.querySelectorAll(".word-section, .daily-word-panel")
     .forEach((element) => element.setAttribute("data-reveal", ""));
