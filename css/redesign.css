@@ -340,7 +340,7 @@ main,
   border: 1px solid var(--line);
   border-radius: 6px;
   background: var(--white);
-  box-shadow: 0 18px 42px rgba(29, 28, 26, .08);
+  box-shadow: none;
 }
 
 .guitar-panel {
@@ -371,9 +371,9 @@ main,
 }
 
 .card-flip-toggle:hover {
-  transform: translateY(-1px);
-  background: var(--accent);
-  color: var(--white);
+  transform: none;
+  background: var(--paper-soft);
+  color: var(--ink);
 }
 
 .card-flip-toggle .fa-solid {
@@ -451,13 +451,12 @@ main,
   background: var(--white);
   color: var(--ink);
   text-decoration: none;
-  transition: border-color .2s var(--ease), background .2s var(--ease), transform .2s var(--ease);
+  transition: border-color .2s var(--ease), background .2s var(--ease);
 }
 
 .weekly-song:hover {
   border-color: rgba(23, 22, 21, .36);
   background: var(--white);
-  transform: translateY(-1px);
 }
 
 .weekly-song-art {
@@ -501,19 +500,13 @@ main,
 }
 
 .weekly-song-bars {
-  display: inline-grid;
-  grid-template-columns: repeat(3, 3px);
-  gap: 3px;
-  align-items: end;
-  height: 22px;
-  padding-right: 2px;
+  display: none;
 }
 
 .weekly-song-bars i {
   display: block;
   border-radius: 999px;
   background: var(--accent);
-  animation: listening-bar 2.8s var(--ease) infinite;
   opacity: .48;
 }
 
@@ -523,18 +516,10 @@ main,
 
 .weekly-song-bars i:nth-child(2) {
   height: 14px;
-  animation-delay: -.7s;
 }
 
 .weekly-song-bars i:nth-child(3) {
   height: 10px;
-  animation-delay: -1.35s;
-}
-
-@keyframes listening-bar {
-  0%, 100% { transform: scaleY(.72); }
-  45% { transform: scaleY(1); }
-  72% { transform: scaleY(.84); }
 }
 
 .guitar {
@@ -581,7 +566,7 @@ main,
   height: var(--string-h, 2px);
   width: 100%;
   border-radius: 999px;
-  background: linear-gradient(90deg, #918a7d, #f9f8f5 18%, #6f695e 48%, #f9f8f5 74%, #918a7d);
+  background: #918a7d;
   box-shadow: 0 1px 0 rgba(255, 255, 255, .8), 0 0 0 transparent;
   transform-origin: center;
   transition: background .2s var(--ease), box-shadow .2s var(--ease);
@@ -606,10 +591,9 @@ main,
   place-items: center;
   border: 1px solid rgba(23, 22, 21, .12);
   border-radius: 5px;
-  background: var(--accent-soft);
-  color: var(--accent);
+  background: var(--paper-soft);
+  color: var(--ink-muted);
   font-weight: 700;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, .72);
 }
 
 .string::after {
@@ -628,18 +612,8 @@ main,
 .string-6 { --string-h: 1.6px; }
 
 .string.is-playing span {
-  animation: string-vibe .42s var(--ease);
-  background: linear-gradient(90deg, #918a7d, #f9f8f5 16%, var(--accent) 50%, #f9f8f5 76%, #918a7d);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, .8), 0 0 18px var(--accent-soft);
-}
-
-@keyframes string-vibe {
-  0% { transform: translateY(0) scaleY(1); }
-  18% { transform: translateY(-5px) scaleY(1.4); }
-  34% { transform: translateY(4px) scaleY(.8); }
-  52% { transform: translateY(-3px) scaleY(1.2); }
-  72% { transform: translateY(2px) scaleY(.9); }
-  100% { transform: translateY(0) scaleY(1); }
+  background: var(--accent);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .8);
 }
 
 .guitar-footer {
@@ -668,8 +642,9 @@ main,
 }
 
 .sound-toggle[aria-pressed="true"] {
-  background: var(--accent);
-  color: var(--white);
+  background: var(--white);
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 .guitar-footer [data-chord-label] {
@@ -686,13 +661,12 @@ main,
   place-items: center;
   border: 1px solid rgba(23, 22, 21, .12);
   border-radius: 5px;
-  background: var(--accent-soft);
-  color: var(--accent);
+  background: var(--paper-soft);
+  color: var(--ink-muted);
   font-family: var(--sans);
   font-size: 11px;
   font-weight: 700;
   line-height: 1;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, .72);
 }
 
 .timer-display {
@@ -899,45 +873,39 @@ main,
 
 .word-section {
   display: grid;
-  grid-template-columns: minmax(0, .72fr) minmax(320px, 1fr);
-  gap: clamp(28px, 6vw, 74px);
-  align-items: stretch;
-  padding: clamp(58px, 8vw, 96px) 0;
+  grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+  gap: clamp(28px, 6vw, 80px);
+  align-items: start;
+  padding: 72px 0;
   border-top: 1px solid var(--line);
 }
 
 .word-intro h2 {
-  max-width: 460px;
+  max-width: 260px;
   margin: 14px 0 0;
   font-family: var(--display);
-  font-size: 4rem;
+  font-size: 2rem;
   font-weight: 500;
   letter-spacing: 0;
-  line-height: 1.08;
+  line-height: 1.18;
 }
 
 .daily-word-panel {
   position: relative;
-  display: flex;
-  min-height: 260px;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
-  padding: clamp(22px, 4vw, 34px);
-  border: 1px solid var(--line);
-  border-radius: 6px;
+  display: grid;
+  gap: 14px;
+  min-height: 0;
+  overflow: visible;
+  padding: 26px 0 30px;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
   background: var(--white);
-  box-shadow: 0 18px 42px rgba(29, 28, 26, .08);
+  box-shadow: none;
 }
 
 .daily-word-panel::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: var(--accent);
+  content: none;
 }
 
 .daily-word-meta {
@@ -945,8 +913,7 @@ main,
   z-index: 1;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 14px;
-  justify-content: space-between;
+  gap: 8px 18px;
   color: var(--ink-muted);
   font-family: var(--sans);
   font-size: 13px;
@@ -958,14 +925,14 @@ main,
 .daily-word-text {
   position: relative;
   z-index: 1;
-  margin: clamp(26px, 4vw, 42px) 0 12px;
+  margin: 0;
   color: var(--ink);
   font-family: var(--serif);
-  font-size: 5rem;
+  font-size: 2.55rem;
   font-style: italic;
   font-weight: 500;
   letter-spacing: 0;
-  line-height: .98;
+  line-height: 1.08;
 }
 
 .daily-word-definition,
@@ -978,14 +945,14 @@ main,
 
 .daily-word-definition {
   color: var(--ink);
-  font-size: 1.3rem;
+  font-size: 1.28rem;
   font-weight: 500;
   letter-spacing: 0;
-  line-height: 1.32;
+  line-height: 1.48;
 }
 
 .daily-word-example {
-  margin-top: 16px;
+  margin-top: 8px;
   color: var(--ink-muted);
   font-size: 15px;
   line-height: 1.45;
@@ -1302,17 +1269,6 @@ main,
   color: var(--accent);
 }
 
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity .7s var(--ease), transform .7s var(--ease);
-}
-
-[data-reveal].is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 @media (max-width: 880px) {
   .site-nav {
     align-items: flex-start;
@@ -1338,7 +1294,7 @@ main,
 
   .guitar-panel,
   .boxing-panel {
-    box-shadow: 7px 7px 0 var(--ink);
+    box-shadow: none;
   }
 
   .writing-head,
@@ -1364,6 +1320,18 @@ main,
 
   .note-list li {
     gap: 10px;
+  }
+
+  .daily-word-panel {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .daily-word-text,
+  .daily-word-definition,
+  .daily-word-example {
+    grid-column: 1;
+    grid-row: auto;
   }
 }
 
@@ -1413,7 +1381,7 @@ main,
   }
 
   .daily-word-panel {
-    box-shadow: 0 12px 28px rgba(29, 28, 26, .08);
+    box-shadow: none;
   }
 
   .hero-writing-list li {
@@ -1482,12 +1450,6 @@ main,
 
   .footer-links {
     justify-content: flex-start;
-  }
-}
-
-@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
-  .weekly-song-bars i {
-    animation: none;
   }
 }
 
