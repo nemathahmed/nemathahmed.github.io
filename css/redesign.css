@@ -238,9 +238,13 @@ main > section {
   line-height: 1;
 }
 
-.home-intro > p:last-child {
+.home-intro-copy {
   max-width: 620px;
   margin: 30px 0 0;
+}
+
+.home-intro-copy p {
+  margin: 0 0 18px;
   color: var(--ink-muted);
   font-size: 21px;
   line-height: 1.55;
@@ -263,10 +267,15 @@ main > section {
   line-height: 1.1;
 }
 
-.subscribe-line {
+.subscribe-line,
+.notes-preface {
   margin: 9px 0 32px;
   color: var(--ink-muted);
   font-size: 16px;
+}
+
+.notes-preface {
+  margin-bottom: 0;
 }
 
 .plain-post-list {
@@ -1123,8 +1132,11 @@ main > section {
     font-size: 44px;
   }
 
-  .home-intro > p:last-child {
+  .home-intro-copy {
     margin-top: 24px;
+  }
+
+  .home-intro-copy p {
     font-size: 19px;
   }
 
