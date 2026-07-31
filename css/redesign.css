@@ -93,10 +93,14 @@ button:focus-visible {
 
 .wordmark {
   flex: 0 0 auto;
-  font-family: var(--serif);
-  font-size: 18px;
-  font-weight: 600;
   text-decoration: none;
+}
+
+.wordmark img,
+.footer-logo img {
+  display: block;
+  width: 34px;
+  height: 34px;
 }
 
 .nav-links {
@@ -126,6 +130,7 @@ button:focus-visible {
 
 main > section,
 .masthead,
+.creative-hero,
 .clicks-hero,
 .clicks-board,
 .about-main,
@@ -205,9 +210,79 @@ main > section {
   color: var(--accent);
 }
 
+.writing-masthead {
+  padding: 76px 0 72px;
+}
+
+.writing-masthead h1 {
+  max-width: 850px;
+  font-size: 64px;
+}
+
+.writing-masthead .masthead-deck {
+  grid-template-columns: 1fr;
+  max-width: 720px;
+}
+
+.research-record {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr) auto;
+  gap: 24px 36px;
+  align-items: start;
+  padding: 24px 0 26px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.research-record > p {
+  margin: 0;
+  color: var(--ink-muted);
+}
+
+.research-record ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.research-record li {
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.research-record li:not(:last-child)::after {
+  content: "·";
+  margin: 0 10px;
+  color: var(--line);
+}
+
+.research-record > a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
 .ruled-section {
   padding: 76px 0 88px;
   border-top: 1px solid var(--ink);
+}
+
+.simple-section-heading {
+  margin-bottom: 36px;
+}
+
+.simple-section-heading h2 {
+  max-width: 820px;
+  margin: 8px 0 0;
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 1.08;
 }
 
 .section-heading {
@@ -336,6 +411,11 @@ main > section {
   border-top: 2px solid var(--ink);
 }
 
+.writing-list-primary,
+.writing-home .section-link {
+  margin-left: 0;
+}
+
 .writing-list li {
   display: grid;
   grid-template-columns: 130px minmax(0, 1fr);
@@ -411,6 +491,53 @@ main > section {
   color: var(--ink-muted);
   font-size: 16px;
   line-height: 1.52;
+}
+
+.note-stream {
+  max-width: 900px;
+  border-top: 2px solid var(--ink);
+}
+
+.note-stream article {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 700px);
+  gap: 18px;
+  padding: 26px 0 30px;
+  border-bottom: 1px solid var(--line);
+}
+
+.note-stream h3 {
+  margin: 0 0 8px;
+  font-family: var(--serif);
+  font-size: 27px;
+  font-weight: 500;
+  line-height: 1.16;
+}
+
+.note-stream article > div > p {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 17px;
+  line-height: 1.52;
+}
+
+.creative-bridge {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 700px);
+  gap: 36px;
+}
+
+.creative-bridge h2 {
+  margin: 0 0 14px;
+  font-family: var(--serif);
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.creative-bridge div > p {
+  margin: 0 0 22px;
+  color: var(--ink-muted);
 }
 
 .film-grid {
@@ -500,6 +627,40 @@ main > section {
   opacity: .88;
 }
 
+/* Creative archive */
+.creative-hero {
+  padding: 76px 0 72px;
+}
+
+.creative-hero h1 {
+  max-width: 900px;
+  margin: 22px 0 24px;
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 1.03;
+}
+
+.creative-hero > p:last-child {
+  max-width: 680px;
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 20px;
+}
+
+.creative-film-feature {
+  margin-bottom: 52px;
+}
+
+.creative-film-grid,
+.creative-photo-edit,
+.creative-record-entry {
+  margin-left: 0;
+}
+
+.creative-section-link {
+  margin-top: 28px;
+}
+
 .about-teaser {
   display: grid;
   grid-template-columns: 180px minmax(0, 1.2fr) minmax(250px, .65fr);
@@ -533,6 +694,15 @@ main > section {
   margin: 0;
   font-size: 19px;
   font-weight: 600;
+}
+
+.footer-logo {
+  text-decoration: none;
+}
+
+.footer-logo img {
+  width: 36px;
+  height: 36px;
 }
 
 .footer-links {
@@ -756,6 +926,14 @@ main > section {
   .about-body {
     grid-template-columns: 160px minmax(0, 1fr);
   }
+
+  .research-record {
+    grid-template-columns: 150px minmax(0, 1fr);
+  }
+
+  .research-record > a {
+    grid-column: 2;
+  }
 }
 
 @media (max-width: 640px) {
@@ -769,10 +947,6 @@ main > section {
     padding: 0 14px;
   }
 
-  .wordmark {
-    font-size: 15px;
-  }
-
   .nav-links {
     gap: 14px;
     font-size: 13px;
@@ -780,6 +954,7 @@ main > section {
 
   main > section,
   .masthead,
+  .creative-hero,
   .clicks-hero,
   .clicks-board,
   .about-main,
@@ -797,6 +972,11 @@ main > section {
     line-height: 1.04;
   }
 
+  .writing-masthead h1,
+  .creative-hero h1 {
+    font-size: 42px;
+  }
+
   .masthead-deck {
     gap: 16px;
   }
@@ -811,6 +991,38 @@ main > section {
 
   .ruled-section {
     padding: 52px 0 62px;
+  }
+
+  .simple-section-heading {
+    margin-bottom: 28px;
+  }
+
+  .simple-section-heading h2,
+  .creative-bridge h2 {
+    font-size: 34px;
+  }
+
+  .research-record {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .research-record > a {
+    grid-column: 1;
+  }
+
+  .note-stream article {
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .note-stream h3 {
+    font-size: 25px;
+  }
+
+  .creative-bridge {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 
   .section-heading {

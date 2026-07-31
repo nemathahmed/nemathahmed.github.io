@@ -96,6 +96,16 @@ body {
   color: var(--blue);
 }
 
+.read-nav .read-mark {
+  flex: 0 0 auto;
+}
+
+.read-nav .read-mark img {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
 #header-post,
 #footer-post-container,
 #footer,
