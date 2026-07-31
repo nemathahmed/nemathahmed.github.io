@@ -20,7 +20,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=20260506">
   <link rel="manifest" href="/images/site.webmanifest?v=20260506">
   <meta name="theme-color" content="#ffffff">
-  <link rel="stylesheet" href="/css/redesign.css?v=20260731-writing">
+  <link rel="stylesheet" href="/css/redesign.css?v=20260731-rough">
 </head>
 
 <body class="home-page writing-home">
@@ -36,112 +36,59 @@
   </nav>
 
   <main id="main-content">
-    <header class="masthead writing-masthead">
-      <p class="folio">Nemath Ahmed · San Francisco</p>
-      <h1>Notes on building, health, and learning.</h1>
-      <div class="masthead-deck">
-        <p>I’m a co-founder of <a href="https://shifu.health/" target="_blank" rel="noopener">Shifu Health</a>. I write to make sense of the work: what we learn from people, what changes while building, and the ideas worth keeping.</p>
-      </div>
-      <div class="masthead-links" aria-label="Selected links">
-        <a href="https://shifu.health/" target="_blank" rel="noopener">shifu.health <span aria-hidden="true">↗</span></a>
-        <a href="https://www.linkedin.com/in/nemathahmed" target="_blank" rel="noopener">linkedin <span aria-hidden="true">↗</span></a>
-      </div>
+    <header class="home-intro">
+      <p class="home-place">San Francisco</p>
+      <h1>Nemath Ahmed</h1>
+      <p>I’m a co-founder of <a href="https://shifu.health/" target="_blank" rel="noopener">Shifu Health</a>. I write about building, health, software, and what I learn along the way.</p>
     </header>
 
-    <section class="research-record" aria-label="Previous research and technical contributions">
-      <p>research and technical work</p>
-      <ul aria-label="Institutions and organizations">
-        <li>Georgia Tech</li>
-        <li>Intel</li>
-        <li>Emory</li>
-        <li>Cisco</li>
-        <li>DARPA</li>
-        <li>TU Dresden</li>
-        <li>IIT Indore</li>
-        <li>NTU Singapore</li>
-        <li>NUS</li>
-      </ul>
-      <a href="https://www.linkedin.com/in/nemathahmed" target="_blank" rel="noopener">context <span aria-hidden="true">↗</span></a>
-    </section>
+    <section class="home-writing" aria-labelledby="writing-title">
+      <h2 id="writing-title">writing</h2>
+      <p class="subscribe-line"><a href="https://nemath.substack.com" target="_blank" rel="noopener">Subscribe on Substack</a> to receive new notes.</p>
 
-    <section class="writing-section ruled-section" aria-labelledby="writing-title">
-      <div class="simple-section-heading">
-        <p class="section-label">selected writing</p>
-        <h2 id="writing-title">Essays</h2>
-      </div>
-
-      <ol class="writing-list writing-list-primary">
+      <ol class="plain-post-list">
         <li>
+          <a href="/2024/05/22/graduating-georgia-tech/">Graduating Georgia Tech</a>
           <time datetime="2024-05">May 2024</time>
-          <a href="/2024/05/22/graduating-georgia-tech/">
-            <span>Graduating Georgia Tech</span>
-            <small>School, building a company, boxing, music, and learning to live with uncertainty.</small>
-          </a>
         </li>
         <li>
+          <a href="/2021/08/04/what-is-data-platform/">What’s a data platform, anyway?</a>
           <time datetime="2021-08">Aug 2021</time>
-          <a href="/2021/08/04/what-is-data-platform/">
-            <span>What’s a data platform, anyway?</span>
-            <small>A plain-language look at how data moves, gets shaped, and becomes useful.</small>
-          </a>
         </li>
         <li>
+          <a href="/2021/07/26/art-of-research/">The art of reading a research paper</a>
           <time datetime="2021-07">Jul 2021</time>
-          <a href="/2021/07/26/art-of-research/">
-            <span>The art of reading a research paper</span>
-            <small>A practical method for slowing down and finding the actual idea.</small>
-          </a>
         </li>
         <li>
+          <a href="/2021/06/15/how-do-fitness/">How AI-based fitness trackers work</a>
           <time datetime="2021-06">Jun 2021</time>
-          <a href="/2021/06/15/how-do-fitness/">
-            <span>How AI-based fitness trackers work</span>
-            <small>Movement data, one-dimensional neural networks, and activity recognition.</small>
-          </a>
         </li>
       </ol>
 
-      <a class="plain-link section-link" href="/archives/">browse the full archive <span aria-hidden="true">→</span></a>
+      <a class="archive-link" href="/archives/">all writing <span aria-hidden="true">→</span></a>
     </section>
 
-    <section class="notes-section ruled-section" id="notes" aria-labelledby="notes-title">
-      <div class="simple-section-heading">
-        <p class="section-label">working notes</p>
-        <h2 id="notes-title">From the work</h2>
-      </div>
+    <section class="home-notes" id="notes" aria-labelledby="notes-title">
+      <h2 id="notes-title">working notes</h2>
 
-      <div class="note-stream">
+      <div class="plain-notes">
         <article>
-          <p class="entry-meta">01</p>
-          <div>
-            <h3>Go where the work happens.</h3>
-            <p>Visiting medical facilities made the back office legible in a way another round of virtual outreach never could. Proximity changes the quality of the questions.</p>
-          </div>
+          <h3>Go where the work happens.</h3>
+          <p>Visiting medical facilities made the back office legible in a way another round of virtual outreach never could. Proximity changes the quality of the questions.</p>
         </article>
         <article>
-          <p class="entry-meta">02</p>
-          <div>
-            <h3>Build alongside people.</h3>
-            <p>Collecting requirements once and disappearing to build is not customer discovery. Keep the feedback loop open while the product is still easy to change.</p>
-          </div>
+          <h3>Build alongside people.</h3>
+          <p>Collecting requirements once and disappearing to build is not customer discovery. Keep the feedback loop open while the product is still easy to change.</p>
         </article>
         <article>
-          <p class="entry-meta">03</p>
-          <div>
-            <h3>Work backwards from tonight.</h3>
-            <p>When a problem expands, return to the deadline: if this needs to work tonight, what must happen right now? Urgency can be clarifying when the outcome is concrete.</p>
-          </div>
+          <h3>Work backwards from tonight.</h3>
+          <p>When a problem expands, return to the deadline: if this needs to work tonight, what must happen right now? Urgency can be clarifying when the outcome is concrete.</p>
         </article>
       </div>
     </section>
 
-    <section class="creative-bridge ruled-section" aria-labelledby="creative-title">
-      <p class="section-label">creative</p>
-      <div>
-        <h2 id="creative-title">Films, photographs, and music live separately.</h2>
-        <p>The visual and musical work has its own room, away from the writing archive.</p>
-        <a class="plain-link" href="/creative/">enter the creative section <span aria-hidden="true">→</span></a>
-      </div>
+    <section class="home-creative-note" aria-label="Creative work">
+      <p>Elsewhere: <a href="/creative/">films, photographs, and music</a>.</p>
     </section>
   </main>
 
