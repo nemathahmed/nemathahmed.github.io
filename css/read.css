@@ -1,20 +1,36 @@
-/* Reading and archive surfaces aligned with the plain homepage. */
+/* Reading and archive surfaces aligned with the personal journal. */
+
+@font-face {
+  font-family: "Source Serif 4";
+  src: url("/fonts/source-serif-4-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Sans 3";
+  src: url("/fonts/source-sans-3-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
 
 :root {
   --paper: #ffffff;
-  --paper-soft: #f5f4f0;
+  --paper-soft: #f3f4f2;
   --mist: #eef2f0;
-  --ink: #1d1c1a;
-  --ink-muted: #66625c;
-  --line: #dedad2;
-  --red: #244a5a;
-  --blue: #244a5a;
-  --green: #536348;
-  --gold: #756844;
+  --ink: #191918;
+  --ink-muted: #65635f;
+  --line: #d9d8d3;
+  --red: #174f46;
+  --blue: #174f46;
+  --green: #426257;
+  --gold: #625f54;
   --white: #ffffff;
-  --display: Georgia, "Times New Roman", Times, serif;
-  --serif: Georgia, "Times New Roman", Times, serif;
-  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --display: "Source Serif 4", Charter, "Bitstream Charter", serif;
+  --serif: "Source Serif 4", Charter, "Bitstream Charter", serif;
+  --sans: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --mono: "SF Mono", "IBM Plex Mono", "Roboto Mono", ui-monospace, Menlo, monospace;
 }
 
@@ -29,8 +45,8 @@ body {
   background: var(--paper) !important;
   color: var(--ink) !important;
   font-family: var(--serif) !important;
-  font-size: 19px;
-  line-height: 1.72;
+  font-size: 18px;
+  line-height: 1.68;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -44,14 +60,14 @@ body {
   top: 0;
   left: 0;
   z-index: 10000;
-  height: 3px;
+  height: 2px;
   width: 0;
   background: var(--blue);
 }
 
 .read-nav {
   position: fixed;
-  top: 3px;
+  top: 2px;
   left: 0;
   right: 0;
   z-index: 100;
@@ -100,15 +116,15 @@ body {
 }
 
 .content.index {
-  width: min(760px, calc(100% - 40px)) !important;
+  width: min(700px, calc(100% - 40px)) !important;
   max-width: none !important;
   margin: 0 auto !important;
-  padding: 116px 0 78px !important;
+  padding: 108px 0 78px !important;
 }
 
 article.post header {
-  margin-bottom: 42px;
-  padding-bottom: 26px;
+  margin-bottom: 46px;
+  padding-bottom: 28px;
   border-bottom: 1px solid var(--line);
 }
 
@@ -128,11 +144,14 @@ h1.posttitle {
   margin: 0 0 18px !important;
   color: var(--ink) !important;
   font-family: var(--display) !important;
-  font-size: 4.75rem !important;
+  font-size: 3.5rem !important;
   font-weight: 500 !important;
   line-height: 1.08 !important;
   letter-spacing: 0 !important;
   text-transform: none !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
 }
 
 article.post .meta {
@@ -159,8 +178,12 @@ article.post .meta .author * {
 .content.e-content {
   color: var(--ink);
   font-family: var(--serif);
-  font-size: 1.22rem;
-  line-height: 1.75;
+  font-size: 19px;
+  line-height: 1.72;
+}
+
+article.post .content.e-content > h2:first-child {
+  display: none;
 }
 
 .content.e-content > * + * {
@@ -187,12 +210,12 @@ article .content h2::before {
 
 .content.e-content h2 {
   margin-top: 2.7em;
-  font-size: 2.35rem;
+  font-size: 2rem;
 }
 
 .content.e-content h3 {
   margin-top: 2.4em;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   color: var(--blue);
 }
 
@@ -251,8 +274,8 @@ article .content h2::before {
   max-width: min(100%, 980px);
   height: auto;
   margin: 2.2em auto;
-  border-radius: 6px;
-  border: 1px solid var(--line);
+  border-radius: 0;
+  border: 0;
 }
 
 .content.e-content img + em,
@@ -298,7 +321,7 @@ hr {
 }
 
 .read-outro {
-  width: min(760px, calc(100% - 40px));
+  width: min(700px, calc(100% - 40px));
   margin: 36px auto 76px;
   padding-top: 30px;
   border-top: 1px solid var(--line);
@@ -310,13 +333,7 @@ hr {
 }
 
 .read-outro-bell {
-  margin-bottom: 8px;
-  color: var(--blue);
-  font-family: var(--display);
-  font-size: 46px;
-  font-weight: 500;
-  letter-spacing: 0;
-  line-height: 1;
+  display: none;
 }
 
 .read-outro-links {
@@ -382,7 +399,7 @@ hr {
   margin: 16px 0 18px;
   color: var(--ink);
   font-family: var(--display);
-  font-size: 4.75rem;
+  font-size: 3.75rem;
   font-weight: 500;
   letter-spacing: 0;
   line-height: 1.08;
@@ -450,7 +467,7 @@ hr {
 
   .read-nav {
     padding: 12px 14px;
-    font-size: 11px;
+    font-size: 13px;
   }
 
   .content.index,
@@ -461,6 +478,28 @@ hr {
 
   .content.index {
     padding-top: 96px !important;
+  }
+
+  h1.posttitle {
+    font-size: 2.75rem !important;
+    line-height: 1.06 !important;
+  }
+
+  .archive-intro h1 {
+    font-size: 2.75rem;
+  }
+
+  .content.e-content {
+    font-size: 18px;
+    line-height: 1.68;
+  }
+
+  .content.e-content h2 {
+    font-size: 1.75rem;
+  }
+
+  .content.e-content h3 {
+    font-size: 1.4rem;
   }
 
   .post-item {
