@@ -164,6 +164,16 @@ h1.posttitle {
   hyphens: none !important;
 }
 
+.post-deck {
+  max-width: 620px;
+  margin: 0 0 22px;
+  color: var(--ink-muted);
+  font-size: 1.25rem;
+  line-height: 1.45;
+  text-align: left;
+  hyphens: none;
+}
+
 article.post .meta {
   display: flex;
   flex-wrap: wrap;
@@ -190,6 +200,8 @@ article.post .meta .author * {
   font-family: var(--serif);
   font-size: 19px;
   line-height: 1.72;
+  text-align: left;
+  hyphens: none;
 }
 
 article.post .content.e-content > h2:first-child {
@@ -202,6 +214,9 @@ article.post .content.e-content > h2:first-child {
 
 .content.e-content p {
   margin-bottom: 1.2em;
+  text-align: left;
+  hyphens: none;
+  -webkit-hyphens: none;
 }
 
 .content.e-content h2,
@@ -298,6 +313,52 @@ article .content h2::before {
   text-align: center;
 }
 
+.content.e-content .post-figure {
+  margin: 2.7em 0;
+}
+
+.content.e-content .post-figure img {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.content.e-content .post-figure figcaption {
+  margin: 10px 0 0;
+  line-height: 1.45;
+}
+
+.content.e-content .post-figure a {
+  display: block;
+  background: none;
+}
+
+.content.e-content .post-figure-document {
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.read-inline-contact,
+.read-outro-links button {
+  appearance: none;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--blue);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+.read-inline-contact:hover,
+.read-outro-links button:hover {
+  color: var(--green);
+}
+
 .content.e-content code {
   padding: 2px 6px;
   border-radius: 4px;
@@ -356,6 +417,12 @@ hr {
 
 .read-outro-links a {
   color: var(--ink);
+  text-decoration: none;
+}
+
+.read-outro-links button {
+  color: var(--ink);
+  font-weight: 400;
   text-decoration: none;
 }
 
@@ -421,6 +488,8 @@ hr {
   color: var(--ink-muted);
   font-size: 1.25rem;
   line-height: 1.35;
+  text-align: left;
+  hyphens: none;
 }
 
 .post-year {
@@ -493,6 +562,10 @@ hr {
   h1.posttitle {
     font-size: 2.75rem !important;
     line-height: 1.06 !important;
+  }
+
+  .post-deck {
+    font-size: 1.12rem;
   }
 
   .archive-intro h1 {
