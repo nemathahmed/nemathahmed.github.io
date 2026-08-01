@@ -782,12 +782,23 @@ main > section {
   font: 500 14px/1.4 var(--sans);
 }
 
-.footer-links a {
+.footer-links a,
+.footer-links button {
   color: var(--ink-muted);
   text-decoration: none;
 }
 
-.footer-links a:hover {
+.footer-links button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.footer-links a:hover,
+.footer-links button:hover {
   color: var(--accent);
 }
 
