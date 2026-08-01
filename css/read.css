@@ -106,6 +106,19 @@ body {
   height: 32px;
 }
 
+.article-page .read-nav {
+  right: auto;
+  justify-content: flex-start;
+  border-bottom: 0;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.article-page .read-nav > a:not(.read-mark) {
+  display: none;
+}
+
 #header-post,
 #footer-post-container,
 #footer,
