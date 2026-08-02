@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Private editor - Nemath Ahmed</title>
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg?v=20260506">
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/css/editor.css?v=20260801">
+  <script src="/js/editor.js?v=20260801" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">skip to editor</a>
+
+  <header class="editor-header">
+    <a class="editor-mark" href="/" aria-label="Nemath Ahmed home"><img src="/images/logo.png" alt="" width="34" height="34"></a>
+    <span>private publisher</span>
+    <button class="icon-button" id="logout-button" type="button" aria-label="Sign out" title="Sign out" hidden>
+      <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
+    </button>
+  </header>
+
+  <main id="main-content" class="editor-main">
+    <section class="login-view" id="login-view" aria-labelledby="login-title">
+      <p class="section-label">private</p>
+      <h1 id="login-title">Editor</h1>
+      <form id="login-form">
+        <label for="password">password</label>
+        <div class="login-row">
+          <input id="password" name="password" type="password" autocomplete="current-password" required>
+          <button class="primary-button" type="submit">
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            <span>sign in</span>
+          </button>
+        </div>
+      </form>
+      <p class="form-status" id="login-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <div class="workspace" id="workspace" hidden>
+      <section class="import-section" aria-labelledby="import-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">source</p>
+            <h1 id="import-title">New writing</h1>
+          </div>
+        </div>
+
+        <form class="import-form" id="import-form">
+          <label for="substack-url">Substack post URL</label>
+          <div class="import-row">
+            <input id="substack-url" name="substack-url" type="url" inputmode="url" placeholder="https://nemath.substack.com/p/...">
+            <button class="secondary-button" type="submit">
+              <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+              <span>import</span>
+            </button>
+          </div>
+        </form>
+        <p class="form-status" id="import-status" role="status" aria-live="polite"></p>
+      </section>
+
+      <form class="post-form" id="post-form">
+        <section class="details-section" aria-labelledby="details-title">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">details</p>
+              <h2 id="details-title">Article</h2>
+            </div>
+          </div>
+
+          <div class="field-grid">
+            <div class="field field-wide">
+              <label for="post-title">title</label>
+              <input id="post-title" name="title" type="text" maxlength="160" required>
+            </div>
+            <div class="field field-wide">
+              <label for="post-summary">summary</label>
+              <textarea id="post-summary" name="summary" rows="2" maxlength="300" required></textarea>
+            </div>
+            <div class="field">
+              <label for="post-slug">URL</label>
+              <div class="slug-field">
+                <span>nemathahmed.com/</span>
+                <input id="post-slug" name="slug" type="text" pattern="[a-z0-9]+(?:-[a-z0-9]+)*" maxlength="80" required>
+                <span>/</span>
+              </div>
+            </div>
+            <div class="field date-field">
+              <label for="post-date">date</label>
+              <input id="post-date" name="date" type="date" required>
+            </div>
+          </div>
+        </section>
+
+        <section class="body-section" aria-labelledby="body-title">
+          <div class="section-heading body-heading">
+            <div>
+              <p class="section-label">body</p>
+              <h2 id="body-title">Writing</h2>
+            </div>
+            <div class="format-toolbar" role="toolbar" aria-label="Text formatting">
+              <button type="button" data-command="bold" aria-label="Bold" title="Bold"><strong>B</strong></button>
+              <button type="button" data-command="italic" aria-label="Italic" title="Italic"><em>I</em></button>
+              <button type="button" data-block="h2" aria-label="Heading" title="Heading">H2</button>
+              <button type="button" data-block="h3" aria-label="Subheading" title="Subheading">H3</button>
+              <button type="button" data-block="blockquote" aria-label="Quote" title="Quote"><i class="fa-solid fa-quote-left" aria-hidden="true"></i></button>
+              <button type="button" data-command="insertUnorderedList" aria-label="Bulleted list" title="Bulleted list"><i class="fa-solid fa-list-ul" aria-hidden="true"></i></button>
+              <button type="button" data-command="insertOrderedList" aria-label="Numbered list" title="Numbered list"><i class="fa-solid fa-list-ol" aria-hidden="true"></i></button>
+              <button type="button" id="link-button" aria-label="Add link" title="Add link"><i class="fa-solid fa-link" aria-hidden="true"></i></button>
+            </div>
+          </div>
+
+          <div
+            class="rich-editor"
+            id="post-content"
+            contenteditable="true"
+            role="textbox"
+            aria-multiline="true"
+            aria-label="Article body"
+            data-placeholder="Paste or write the article here."
+          ></div>
+        </section>
+
+        <section class="publish-section" aria-label="Publishing options">
+          <div class="publish-options">
+            <label class="check-field">
+              <input id="feature-home" type="checkbox" checked>
+              <span>show on homepage</span>
+            </label>
+            <label class="check-field">
+              <input id="overwrite-post" type="checkbox">
+              <span>replace existing URL</span>
+            </label>
+          </div>
+
+          <div class="publish-actions">
+            <button class="secondary-button" id="preview-button" type="button">
+              <i class="fa-solid fa-eye" aria-hidden="true"></i>
+              <span>preview</span>
+            </button>
+            <button class="primary-button" id="publish-button" type="submit">
+              <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>
+              <span>publish</span>
+            </button>
+          </div>
+        </section>
+
+        <p class="publish-status" id="publish-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </main>
+
+  <dialog class="preview-dialog" id="preview-dialog">
+    <div class="preview-bar">
+      <span>preview</span>
+      <button class="icon-button" id="close-preview" type="button" aria-label="Close preview" title="Close preview">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+    <article class="article-preview">
+      <header>
+        <h1 id="preview-title"></h1>
+        <p id="preview-summary"></p>
+      </header>
+      <div class="preview-content" id="preview-content"></div>
+    </article>
+  </dialog>
+</body>
+</html>
