@@ -8,7 +8,6 @@
     "node": "24.x"
   },
   "dependencies": {
-    "cheerio": "1.1.2",
-    "sanitize-html": "2.17.6"
+    "cheerio": "1.1.2"
   }
 }

@@ -33,6 +33,7 @@ test('normalizes Substack markup and removes executable or subscription content'
     </div>
     <h2>A section</h2>
     <p>Hello <a href="https://example.com" onclick="bad()">world</a>.</p>
+    <p><a href="javascript:alert(1)">unsafe link</a><img src="data:text/html,bad"></p>
     <script>alert('bad')</script>
     <div class="subscription-widget-wrap-editor"><form><input></form></div>
   `);
@@ -41,7 +42,7 @@ test('normalizes Substack markup and removes executable or subscription content'
   assert.match(content, /loading="lazy"/);
   assert.match(content, /<h2 id="a-section">A section<\/h2>/);
   assert.match(content, /target="_blank" rel="noopener"/);
-  assert.doesNotMatch(content, /script|onclick|subscription-widget|form|input/);
+  assert.doesNotMatch(content, /script|onclick|subscription-widget|form|input|javascript:|data:text/);
 });
 
 test('imports a matching post from the Substack feed', async () => {

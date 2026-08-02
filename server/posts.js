@@ -1,5 +1,4 @@
 const cheerio = require('cheerio');
-const sanitizeHtml = require('sanitize-html');
 
 const SUBSTACK_HOST = 'nemath.substack.com';
 const HOME_MARKER = '<!-- editor-posts:start -->';
@@ -63,51 +62,95 @@ function imageMarkup($, image, caption = '') {
   return `<figure class="post-figure"><img ${attributes.join(' ')}>${caption ? `<figcaption>${escapeHtml(caption)}</figcaption>` : ''}</figure>`;
 }
 
-const sanitizerOptions = {
-  allowedTags: [
-    'p', 'h2', 'h3', 'h4', 'strong', 'b', 'em', 'i', 'a', 'blockquote',
-    'ul', 'ol', 'li', 'figure', 'figcaption', 'img', 'hr', 'br', 'code', 'pre'
-  ],
-  allowedAttributes: {
-    a: ['href', 'target', 'rel'],
-    h2: ['id'],
-    h3: ['id'],
-    h4: ['id'],
-    figure: ['class'],
-    img: ['src', 'alt', 'width', 'height', 'loading']
-  },
-  allowedClasses: {
-    figure: ['post-figure']
-  },
-  allowedSchemes: ['http', 'https', 'mailto'],
-  allowedSchemesByTag: {
-    img: ['http', 'https']
-  },
-  allowProtocolRelative: false,
-  transformTags: {
-    a: (tagName, attribs) => {
-      const href = attribs.href || '';
-      const external = /^https?:\/\//i.test(href);
-      return {
-        tagName,
-        attribs: {
-          href,
-          ...(external ? { target: '_blank', rel: 'noopener' } : {})
-        }
-      };
-    },
-    img: (tagName, attribs) => ({
-      tagName,
-      attribs: {
-        src: attribs.src || '',
-        alt: attribs.alt || '',
-        ...(attribs.width ? { width: attribs.width } : {}),
-        ...(attribs.height ? { height: attribs.height } : {}),
-        loading: 'lazy'
-      }
-    })
-  }
+const allowedTags = new Set([
+  'p', 'h2', 'h3', 'h4', 'strong', 'b', 'em', 'i', 'a', 'blockquote',
+  'ul', 'ol', 'li', 'figure', 'figcaption', 'img', 'hr', 'br', 'code', 'pre'
+]);
+
+const allowedAttributes = {
+  a: new Set(['href', 'target', 'rel']),
+  h2: new Set(['id']),
+  h3: new Set(['id']),
+  h4: new Set(['id']),
+  figure: new Set(['class']),
+  img: new Set(['src', 'alt', 'width', 'height', 'loading'])
 };
+
+function safeLink(value) {
+  const href = String(value || '').trim();
+  if (href.startsWith('/') || href.startsWith('#')) return href;
+
+  try {
+    const url = new URL(href);
+    return ['http:', 'https:', 'mailto:'].includes(url.protocol) ? href : '';
+  } catch {
+    return '';
+  }
+}
+
+function safeImage(value) {
+  const source = String(value || '').trim();
+  if (source.startsWith('/')) return source;
+
+  try {
+    const url = new URL(source);
+    return ['http:', 'https:'].includes(url.protocol) ? source : '';
+  } catch {
+    return '';
+  }
+}
+
+function sanitizeDom($, root) {
+  root.find('*').toArray().reverse().forEach((element) => {
+    const node = $(element);
+    const tag = element.tagName.toLowerCase();
+
+    if (!allowedTags.has(tag)) {
+      node.replaceWith(node.contents());
+      return;
+    }
+
+    const tagAttributes = allowedAttributes[tag] || new Set();
+    Object.keys(element.attribs || {}).forEach((attribute) => {
+      if (!tagAttributes.has(attribute)) node.removeAttr(attribute);
+    });
+
+    if (tag === 'a') {
+      const href = safeLink(node.attr('href'));
+      if (!href) {
+        node.removeAttr('href');
+        node.removeAttr('target');
+        node.removeAttr('rel');
+      } else {
+        node.attr('href', href);
+        if (/^https?:\/\//i.test(href)) {
+          node.attr('target', '_blank');
+          node.attr('rel', 'noopener');
+        } else {
+          node.removeAttr('target');
+          node.removeAttr('rel');
+        }
+      }
+    }
+
+    if (tag === 'img') {
+      const source = safeImage(node.attr('src'));
+      if (!source) {
+        node.remove();
+        return;
+      }
+
+      node.attr('src', source);
+      node.attr('alt', node.attr('alt') || '');
+      node.attr('loading', 'lazy');
+      ['width', 'height'].forEach((dimension) => {
+        if (!/^\d+$/.test(node.attr(dimension) || '')) node.removeAttr(dimension);
+      });
+    }
+
+    if (tag === 'figure') node.attr('class', 'post-figure');
+  });
+}
 
 function normalizeArticleContent(input) {
   const $ = cheerio.load(`<main id="article-root">${input || ''}</main>`, {
@@ -133,15 +176,12 @@ function normalizeArticleContent(input) {
     $(element).replaceWith($(element).contents());
   });
 
-  const sanitized = sanitizeHtml(root.html() || '', sanitizerOptions);
-  const normalized = cheerio.load(`<main id="article-root">${sanitized}</main>`, {
-    decodeEntities: false
-  }, false);
-  const normalizedRoot = normalized('#article-root');
   const usedIds = new Set();
 
-  normalizedRoot.find('h2, h3, h4').each((index, element) => {
-    const heading = normalized(element);
+  sanitizeDom($, root);
+
+  root.find('h2, h3, h4').each((index, element) => {
+    const heading = $(element);
     const base = slugify(heading.text()) || `section-${index + 1}`;
     let id = base;
     let suffix = 2;
@@ -150,14 +190,12 @@ function normalizeArticleContent(input) {
     heading.attr('id', id);
   });
 
-  normalizedRoot.find('figure').addClass('post-figure');
-  normalizedRoot.find('img').attr('loading', 'lazy');
-  normalizedRoot.find('p').each((index, element) => {
-    const paragraph = normalized(element);
+  root.find('p').each((index, element) => {
+    const paragraph = $(element);
     if (!paragraph.text().trim() && paragraph.find('img, br').length === 0) paragraph.remove();
   });
 
-  return sanitizeHtml(normalizedRoot.html() || '', sanitizerOptions).trim();
+  return (root.html() || '').trim();
 }
 
 function textFromHtml(html) {
