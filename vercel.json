@@ -95,8 +95,13 @@
   ],
   "redirects": [
     {
-      "source": "/looking-back-the-dots-connect/:path*",
-      "destination": "/looking-back-forward/:path*",
+      "source": "/looking-back-the-dots-connect",
+      "destination": "/looking-back-forward/",
+      "permanent": true
+    },
+    {
+      "source": "/looking-back-the-dots-connect/",
+      "destination": "/looking-back-forward/",
       "permanent": true
     }
   ]
